@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 import CardsList from './components/cardsList/CardsList'
 import testJson from './test.json'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
