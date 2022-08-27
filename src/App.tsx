@@ -7,12 +7,12 @@ import testJson from './test.json'
 function App() {
   return (
     <div className='App'>
-      <div className='dashboard'>
+      <section className='dashboard'>
         <CardsList cards={testJson} />
         <CardsList cards={testJson} />
         <CardsList cards={testJson} />
         <CardsList cards={testJson} />
-      </div>
+      </section>
     </div>
   )
 }
