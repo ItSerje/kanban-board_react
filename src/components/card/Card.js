@@ -1,10 +1,10 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button'
-import BootstrapCard from 'react-bootstrap/Card'
-import './style.css'
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import BootstrapCard from 'react-bootstrap/Card';
+import './style.css';
 
 const Card2 = ({ card, addCardHandler }) => {
-  const { author, text } = card
+  const { author, text } = card;
 
   return (
     <BootstrapCard style={{ width: '18rem' }}>
@@ -17,7 +17,7 @@ const Card2 = ({ card, addCardHandler }) => {
         </Button>
       </BootstrapCard.Body>
     </BootstrapCard>
-  )
-}
+  );
+};
 
-export default Card2
+export default Card2;

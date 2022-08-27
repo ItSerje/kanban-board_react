@@ -1,9 +1,9 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.css'
-import CardsList from './components/cardsList/CardsList'
-import testJson from './test.json'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import CardsList from './components/cardsList/CardsList';
+import testJson from './test.json';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <CardsList cards={testJson} />
       </section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

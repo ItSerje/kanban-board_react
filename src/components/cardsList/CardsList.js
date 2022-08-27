@@ -1,6 +1,6 @@
-import React from 'react'
-import Card from '../card/Card'
-import './style.css'
+import React from 'react';
+import Card from '../card/Card';
+import './style.css';
 
 const CardsList = ({ cards }) => {
   return (
@@ -12,7 +12,7 @@ const CardsList = ({ cards }) => {
         </>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default CardsList
+export default CardsList;
