@@ -1,6 +1,30 @@
 [
-  { "id": 1, "author": "John", "text": "lorem ipsum" },
-  { "id": 2, "author": "Mary", "text": "lorem ipsum" },
-  { "id": 3, "author": "Smith", "text": "lorem ipsum" },
-  { "id": 4, "author": "Mike", "text": "lorem ipsum" }
+  {
+    "id": 1,
+    "author": "John",
+    "title": "Street art ugh pabst cronut bushwick",
+    "text": "Locavore small batch lyft whatever. Tonx literally godard gluten-free, distillery waistcoat tofu. Prism freegan offal gastropub snackwave. Yr enamel pin listicle fashion axe celiac. Stumptown live-edge cloud bread ethical.",
+    "commentsCounter": 4
+  },
+  {
+    "id": 2,
+    "author": "Mary",
+    "title": "JOMO shaman green juice af disrupt whatever helvetica pitchfork 8-bit",
+    "text": "I'm baby green juice mukbang wayfarers snackwave farm-to-table flannel put a bird on it portland DIY gentrify try-hard shabby chic woke.",
+    "commentsCounter": 5
+  },
+  {
+    "id": 3,
+    "author": "Chris",
+    "title": "Godard butcher portland photo booth",
+    "text": "I'm baby chia poutine butcher raw denim tumeric bruh photo booth schlitz 8-bit. Stumptown direct trade pug flannel iceland listicle locavore kogi irony woke vaporware bruh. Edison bulb glossier ramps heirloom cray narwhal craft beer air plant shoreditch. Freegan salvia kickstarter tattooed, asymmetrical fam aesthetic mlkshk vape cardigan vaporware 3 wolf moon.",
+    "commentsCounter": 0
+  },
+  {
+    "id": 4,
+    "author": "Mike",
+    "title": "Ramps palo santo slow-carb glossier normcore microdosing",
+    "text": "I'm baby whatever raw denim humblebrag, roof party +1 gochujang fixie wayfarers portland vaporware vexillologist you probably haven't heard of them flannel skateboard truffaut.",
+    "commentsCounter": 3
+  }
 ]
