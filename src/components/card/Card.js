@@ -1,7 +1,4 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
 import BootstrapCard from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 import './style.css';
 
 const Card = ({ card, openCardHandler }) => {
