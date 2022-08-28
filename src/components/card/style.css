@@ -5,6 +5,60 @@
   background-color: white;
 } */
 
+.card {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #091e4240;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 8px;
+  max-width: 300px;
+  min-height: 20px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+}
+
+.card-body {
+  overflow: hidden;
+  padding: 6px 8px 2px;
+  position: relative;
+  z-index: 10;
+}
+
+.card-title {
+  word-wrap: break-word;
+  clear: both;
+  color: var(--ds-text);
+  display: block;
+  margin: 0 0 4px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card-edit-icon {
+  background-clip: padding-box;
+  background-color: #f4f5f7;
+  background-origin: initial;
+  border-radius: 3px;
+  opacity: 0.8;
+  padding: 4px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  visibility: visible;
+  z-index: 40;
+}
+
+.card-edit-icon::before {
+  content: '✍🏻';
+}
+
+.card-footer {
+  border: none;
+  background: none;
+}
+
 .card-badge-icon::before {
   content: '🧾';
 }
