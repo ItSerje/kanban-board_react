@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import BootstrapCard from 'react-bootstrap/Card';
 import './style.css';
 
-const Card2 = ({ card, addCardHandler }) => {
+const Card = ({ card, addCardHandler }) => {
   const { author, text } = card;
 
   return (
@@ -20,4 +20,4 @@ const Card2 = ({ card, addCardHandler }) => {
   );
 };
 
-export default Card2;
+export default Card;
