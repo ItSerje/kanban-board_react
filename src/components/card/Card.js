@@ -8,8 +8,8 @@ const Card = ({ card, openCardHandler }) => {
     <BootstrapCard onClick={openCardHandler}>
       {/* <Card.Img variant='top' src='holder.js/100px180' /> */}
       <span className='card-edit-icon'></span>
-      <BootstrapCard.Body>
-        <BootstrapCard.Title>{title}</BootstrapCard.Title>
+      <BootstrapCard.Body className='card-list-card-body'>
+        <BootstrapCard.Title as='div'>{title}</BootstrapCard.Title>
         {/* <BootstrapCard.Text>{author}</BootstrapCard.Text> */}
         {/* <Button variant='primary' onClick={addCardHandler}>
           Add card
