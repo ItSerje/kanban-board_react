@@ -29,11 +29,17 @@ const CardsList = ({ cards, name, columnId }) => {
                 rows={1}
                 autoFocus
                 value={inputValue}
+                onFocus={(e) => {
+                  e.target.setSelectionRange(
+                    e.target.value.length,
+                    e.target.value.length
+                  );
+                }}
                 onChange={(e) => {
                   setInputValue(e.target.value);
+                  updateDashboardColumnName(columnId, e.target.value);
                 }}
                 onBlur={() => {
-                  updateDashboardColumnName(columnId, inputValue);
                   setNameEditMode(false);
                 }}
               />
