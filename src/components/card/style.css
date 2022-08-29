@@ -19,7 +19,7 @@
   z-index: 0;
 }
 
-.card-body {
+.card-list-card-body {
   overflow: hidden;
   padding: 6px 8px 2px;
   position: relative;
