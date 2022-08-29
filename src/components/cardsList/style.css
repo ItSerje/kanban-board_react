@@ -4,3 +4,50 @@
   width: 272px;
   background-color: var(--card-list-background-color);
 } */
+
+.cards-list-wrapper {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 100%;
+  margin: 0 4px;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 272px;
+}
+
+.cards-list {
+  background-color: #ebecf0 !important;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+  width: 100% !important;
+}
+
+.cards-list-header {
+  flex: 0 0 auto;
+  min-height: 20px;
+  padding: 10px 8px;
+  position: relative;
+  border: none;
+}
+
+.cards-list-body {
+  flex: 1 1 auto;
+  margin: 0 4px;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 4px;
+  z-index: 1;
+}
+
+.cards-list-footer {
+  display: flex;
+  justify-content: space-between;
+  max-height: 38px;
+  min-height: 38px px;
+}
