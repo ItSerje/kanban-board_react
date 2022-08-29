@@ -12,10 +12,7 @@ const CardsList = ({ cards }) => {
         </BootstrapCard.Header>
         <BootstrapCard.Body bsPrefix='cards-list-body'>
           {cards.map((card) => (
-            <>
-              {console.log(card)}
-              <Card card={card} key={card.id} />
-            </>
+            <Card card={card} key={card.id} />
           ))}
         </BootstrapCard.Body>
         <BootstrapCard.Footer bsPrefix='cards-list-footer'>
