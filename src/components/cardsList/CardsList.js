@@ -7,7 +7,7 @@ import { useDashboardContext } from '../../context/dashboard_context';
 
 const CardsList = ({ cards, name, columnId }) => {
   const [isNameEditMode, setNameEditMode] = useState(false);
-  const { dashboard, setDashboard } = useDashboardContext();
+  const { updateDashboardColumnName } = useDashboardContext();
   const [inputValue, setInputValue] = useState(name);
 
   return (
@@ -32,10 +32,8 @@ const CardsList = ({ cards, name, columnId }) => {
                 onChange={(e) => {
                   setInputValue(e.target.value);
                 }}
-                onBlur={(e) => {
-                  const newDashboard = { ...dashboard };
-                  newDashboard.columns[columnId].name = e.target.value;
-                  setDashboard(newDashboard);
+                onBlur={() => {
+                  updateDashboardColumnName(columnId, inputValue);
                   setNameEditMode(false);
                 }}
               />

@@ -1,21 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
+import { UPDATE_DASHBOARD_COLUMN_NAME } from '../actions';
+import reducer from '../reducers/dashboard_reducer';
 import dashboardState from '../dashboardState.json';
 
 const DashboardContext = React.createContext();
 
+const initialState =
+  JSON.parse(window.localStorage.getItem('dashboard')) ||
+  dashboardState.dashboard;
+
 export const DashboardProvider = ({ children }) => {
-  const [dashboard, setDashboard] = useState(
-    JSON.parse(window.localStorage.getItem('dashboard')) ||
-      dashboardState.dashboard
-  );
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const updateDashboardColumnName = (columnId, text) => {
+    dispatch({
+      type: UPDATE_DASHBOARD_COLUMN_NAME,
+      payload: { columnId, text },
+    });
+  };
 
   useEffect(() => {
-    console.log('im hree');
-    window.localStorage.setItem('dashboard', JSON.stringify(dashboard));
-  }, [dashboard]);
+    window.localStorage.setItem('dashboard', JSON.stringify(state));
+  }, [state]);
 
   return (
-    <DashboardContext.Provider value={{ dashboard, setDashboard }}>
+    <DashboardContext.Provider
+      value={{ dashboard: state, updateDashboardColumnName }}
+    >
       {children}
     </DashboardContext.Provider>
   );
