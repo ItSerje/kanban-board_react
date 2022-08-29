@@ -6,11 +6,11 @@ import Card from '../card/Card';
 const CardsList = ({ cards }) => {
   return (
     <div className='cards-list-wrapper'>
-      <BootstrapCard className='cards-list'>
-        <BootstrapCard.Header className='cards-list-header'>
+      <BootstrapCard bsPrefix='cards-list'>
+        <BootstrapCard.Header bsPrefix='cards-list-header'>
           Column name
         </BootstrapCard.Header>
-        <BootstrapCard.Body className='cards-list-body'>
+        <BootstrapCard.Body bsPrefix='cards-list-body'>
           {cards.map((card) => (
             <>
               {console.log(card)}
@@ -18,7 +18,7 @@ const CardsList = ({ cards }) => {
             </>
           ))}
         </BootstrapCard.Body>
-        <BootstrapCard.Footer className='cards-list-footer'>
+        <BootstrapCard.Footer bsPrefix='cards-list-footer'>
           + Add a card
         </BootstrapCard.Footer>
       </BootstrapCard>
