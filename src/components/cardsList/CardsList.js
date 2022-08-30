@@ -3,11 +3,9 @@ import BootstrapCard from 'react-bootstrap/Card';
 import BootstrapForm from 'react-bootstrap/Form';
 import './style.css';
 import Card from '../card/Card';
-import { useDashboardContext } from '../../context/dashboard_context';
 
 const CardsList = ({ cards, name, columnId }) => {
   const [isNameEditMode, setNameEditMode] = useState(false);
-  const { updateDashboardColumnName } = useDashboardContext();
   const [inputValue, setInputValue] = useState(name);
 
   return (
@@ -34,11 +32,9 @@ const CardsList = ({ cards, name, columnId }) => {
                 }}
                 onChange={(e) => {
                   setInputValue(e.target.value);
-                  updateDashboardColumnName(columnId, e.target.value);
                 }}
                 onKeyDown={(e) => {
                   if (['Enter', 'NumpadEnter', 'Escape'].includes(e.key)) {
-                    updateDashboardColumnName(columnId, e.target.value);
                     setNameEditMode(false);
                   }
                 }}

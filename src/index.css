@@ -11,3 +11,9 @@
   font-weight: 400;
   line-height: 20px;
 }
+
+#root {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

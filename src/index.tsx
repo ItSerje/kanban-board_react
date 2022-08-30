@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import { DashboardProvider } from './context/dashboard_context';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -10,9 +10,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <DashboardProvider>
-      <App />
-    </DashboardProvider>
+    <App />
   </React.StrictMode>
 );
 
