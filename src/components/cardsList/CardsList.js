@@ -53,10 +53,9 @@ const CardsList = ({ cards, name, columnId }) => {
         )}
       </BootstrapCard.Header>
       <BootstrapCard.Body bsPrefix='cards-list-body'>
-        {Object.keys(cards).map((key) => {
-          const card = cards[key];
-          return <Card card={card} key={card.id} />;
-        })}
+        {cards.map((card) => (
+          <Card card={card} key={card.id} />
+        ))}
       </BootstrapCard.Body>
       <BootstrapCard.Footer bsPrefix='cards-list-footer'>
         + Add a card
