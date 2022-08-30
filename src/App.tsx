@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import logo from './logo.svg';
+import BootstrapContainer from 'react-bootstrap/Container';
+import BootstrapNavbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import CardsListContainer from './components/cardsList/CardsListContainer';
@@ -15,7 +17,18 @@ function App() {
 
   return (
     <section className='dashboard'>
-      <>
+      <BootstrapNavbar>
+        <BootstrapContainer>
+          <BootstrapNavbar.Brand href='#home'>Dashboard</BootstrapNavbar.Brand>
+          <BootstrapNavbar.Toggle />
+          <BootstrapNavbar.Collapse className='justify-content-end'>
+            <BootstrapNavbar.Text>
+              Signed in as: <a href='#login'>Mark Otto</a>
+            </BootstrapNavbar.Text>
+          </BootstrapNavbar.Collapse>
+        </BootstrapContainer>
+      </BootstrapNavbar>
+      <BootstrapContainer className='dashboard-container'>
         <LoginModal
           modalShow={modalShow}
           closeModalHandler={closeModalHandler}
@@ -33,7 +46,7 @@ function App() {
             />
           );
         })}
-      </>
+      </BootstrapContainer>
     </section>
   );
 }
