@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './App.css';
-import LoginModal from './components/LoginModal/LoginModal';
+import LoginModal from './components/loginModal/LoginModal';
 import Navbar from './components/navbar/Navbar';
-import DashboardContainer from './dashboard/DashboardContainer';
+import DashboardContainer from './components/dashboard/DashboardContainer';
 
 function App() {
   const [modalShow, setModalShow] = useState(true);

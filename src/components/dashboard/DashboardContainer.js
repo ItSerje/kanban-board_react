@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchDashboard } from '../api';
+import { fetchDashboard } from '../../api';
 import Dashboard from './Dashboard';
 import './style.css';
 

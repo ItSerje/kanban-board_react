@@ -1,4 +1,4 @@
-import CardsListContainer from '../components/cardsList/CardsListContainer';
+import CardsListContainer from '../cardsList/CardsListContainer';
 import './style.css';
 
 const Dashboard = ({ dashboard, refreshDashboard }) => {
