@@ -13,7 +13,7 @@ const LoginModal = ({ modalShow, closeModalHandler, loginHandler }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>Please enter your name to login</Modal.Title>
+        <Modal.Title>Please enter your name to sign in</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -34,7 +34,7 @@ const LoginModal = ({ modalShow, closeModalHandler, loginHandler }) => {
             closeModalHandler();
           }}
         >
-          Login
+          Sign In
         </Button>
       </Modal.Footer>
     </Modal>
