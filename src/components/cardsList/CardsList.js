@@ -30,14 +30,17 @@ const CardsList = ({ cards, name, columnId }) => {
                 autoFocus
                 value={inputValue}
                 onFocus={(e) => {
-                  e.target.setSelectionRange(
-                    e.target.value.length,
-                    e.target.value.length
-                  );
+                  e.target.select();
                 }}
                 onChange={(e) => {
                   setInputValue(e.target.value);
                   updateDashboardColumnName(columnId, e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (['Enter', 'NumpadEnter', 'Escape'].includes(e.key)) {
+                    updateDashboardColumnName(columnId, e.target.value);
+                    setNameEditMode(false);
+                  }
                 }}
                 onBlur={() => {
                   setNameEditMode(false);
