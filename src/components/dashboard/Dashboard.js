@@ -6,7 +6,7 @@ const Dashboard = ({ dashboard, refreshDashboard }) => {
     <main>
       {dashboard && (
         <section className='dashboard'>
-          {dashboard.dashboard.columns.map((column) => {
+          {dashboard.columns.map((column) => {
             const { id, name, cards } = column;
             return (
               <CardsListContainer
@@ -14,6 +14,7 @@ const Dashboard = ({ dashboard, refreshDashboard }) => {
                 key={id}
                 name={name}
                 columnId={id}
+                refreshDashboard={refreshDashboard}
               />
             );
           })}
