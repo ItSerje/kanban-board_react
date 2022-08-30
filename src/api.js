@@ -22,4 +22,9 @@ const fetchDashboard = async () => {
   return dashboard;
 };
 
-export { fetchDashboard };
+const signInUser = async (user) => {
+  console.log('trying to signin...');
+  localStorage.setItem('currenUser', JSON.stringify(user));
+};
+
+export { fetchDashboard, signInUser };

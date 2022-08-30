@@ -7,17 +7,12 @@ import DashboardContainer from './components/dashboard/DashboardContainer';
 function App() {
   const [modalShow, setModalShow] = useState(true);
   const closeModalHandler = () => setModalShow(false);
-  const loginHandler = () => console.log('login');
 
   return (
     <>
       <Navbar />
       <DashboardContainer />
-      <LoginModal
-        modalShow={modalShow}
-        closeModalHandler={closeModalHandler}
-        loginHandler={loginHandler}
-      />
+      <LoginModal modalShow={modalShow} closeModalHandler={closeModalHandler} />
     </>
   );
 }
