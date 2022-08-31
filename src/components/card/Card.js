@@ -2,7 +2,7 @@ import BootstrapCard from 'react-bootstrap/Card';
 import './style.css';
 
 const Card = ({ card, openCardHandler }) => {
-  const { commentsCounter, title } = card;
+  const { comments, title } = card;
 
   return (
     <BootstrapCard onClick={openCardHandler}>
@@ -24,7 +24,7 @@ const Card = ({ card, openCardHandler }) => {
 
         <div className='card-badge' title='Comments'>
           <span className='card-badge-icon'></span>
-          <span className='card-badge-text'>{commentsCounter}</span>
+          <span className='card-badge-text'>{comments.length}</span>
         </div>
       </BootstrapCard.Footer>
     </BootstrapCard>
