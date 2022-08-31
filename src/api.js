@@ -10,21 +10,36 @@ const asyncTimeout = (ms) => {
   });
 };
 
-const fetchDashboard = async () => {
-  let dashboard = localStorage.getItem('dashboard');
-  await asyncTimeout(responseDelay);
-  if (dashboard) {
-    dashboard = await JSON.parse(dashboard);
-    return dashboard;
+const exportJSONToLocalStorage = async () => {
+  if (!localStorage.getItem('data')) {
+    localStorage.setItem('data', JSON.stringify(dashboardState));
   }
-  dashboard = dashboardState.dashboard;
-  localStorage.setItem('dashboard', JSON.stringify(dashboard));
-  return dashboard;
+};
+
+const fetchDashboard = async () => {
+  await exportJSONToLocalStorage();
+  await asyncTimeout(responseDelay);
+  const data = localStorage.getItem('data');
+  if (data) {
+    const parsedData = await JSON.parse(data);
+    return parsedData.dashboard;
+  }
+  return null;
 };
 
 const signInUser = async (user) => {
-  console.log('trying to signin...');
+  await asyncTimeout(responseDelay);
   localStorage.setItem('currenUser', JSON.stringify(user));
+  return true;
 };
 
-export { fetchDashboard, signInUser };
+const fetchCurrentUser = async () => {
+  await asyncTimeout(responseDelay);
+  const response = localStorage.getItem('currentUser');
+  if (response) {
+    return await JSON.parse(response);
+  }
+  return null;
+};
+
+export { fetchDashboard, signInUser, fetchCurrentUser };
