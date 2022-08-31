@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import './App.css';
 import LoginModal from './components/loginModal/LoginModal';
 import Navbar from './components/navbar/Navbar';
@@ -7,6 +7,8 @@ import DashboardContainer from './components/dashboard/DashboardContainer';
 function App() {
   const [modalShow, setModalShow] = useState(true);
   const closeModalHandler = () => setModalShow(false);
+  const [currentUser, setCurrentUser] = useState('');
+  const getCurrentUser = (user: SetStateAction<string>) => setCurrentUser(user);
 
   return (
     <>
@@ -14,13 +16,14 @@ function App() {
         <LoginModal
           modalShow={modalShow}
           closeModalHandler={closeModalHandler}
+          getCurrentUser={getCurrentUser}
         />
       )}
       {!modalShow && (
         <>
-          <Navbar />
+          <Navbar currentUser={currentUser} />
           <main>
-            <DashboardContainer />
+            <DashboardContainer currentUser={currentUser} />
           </main>
         </>
       )}

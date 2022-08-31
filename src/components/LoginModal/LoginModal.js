@@ -5,7 +5,7 @@ import './style.css';
 import { signInUser } from '../../api';
 import { useState } from 'react';
 
-const LoginModal = ({ modalShow, closeModalHandler }) => {
+const LoginModal = ({ modalShow, closeModalHandler, getCurrentUser }) => {
   const [validated, setValidated] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -15,7 +15,7 @@ const LoginModal = ({ modalShow, closeModalHandler }) => {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      signInUser(inputValue);
+      getCurrentUser(inputValue);
       closeModalHandler();
     }
     setValidated(true);
