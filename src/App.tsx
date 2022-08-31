@@ -19,7 +19,9 @@ function App() {
       {!modalShow && (
         <>
           <Navbar />
-          <DashboardContainer />
+          <main>
+            <DashboardContainer />
+          </main>
         </>
       )}
     </>
