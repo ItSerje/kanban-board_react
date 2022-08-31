@@ -1,11 +1,11 @@
 import BootstrapCard from 'react-bootstrap/Card';
 import './style.css';
 
-const Card = ({ card, openCardHandler }) => {
-  const { comments, title } = card;
+const Card = ({ card, columnId, openCardHandler }) => {
+  const { id: cardId, comments, title } = card;
 
   return (
-    <BootstrapCard onClick={openCardHandler}>
+    <BootstrapCard onClick={() => openCardHandler(cardId, columnId)}>
       {/* <Card.Img variant='top' src='holder.js/100px180' /> */}
       <span className='card-edit-icon'></span>
       <BootstrapCard.Body className='card-list-card-body'>
