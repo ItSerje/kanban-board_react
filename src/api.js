@@ -27,19 +27,4 @@ const fetchDashboard = async () => {
   return null;
 };
 
-const signInUser = async (user) => {
-  await asyncTimeout(RESPONSE_DELAY);
-  localStorage.setItem('currenUser', JSON.stringify(user));
-  return true;
-};
-
-const fetchCurrentUser = async () => {
-  await asyncTimeout(RESPONSE_DELAY);
-  const response = localStorage.getItem('currentUser');
-  if (response) {
-    return await JSON.parse(response);
-  }
-  return null;
-};
-
-export { fetchDashboard, signInUser, fetchCurrentUser };
+export { fetchDashboard };
