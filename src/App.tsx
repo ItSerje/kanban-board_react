@@ -10,9 +10,18 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <DashboardContainer />
-      <LoginModal modalShow={modalShow} closeModalHandler={closeModalHandler} />
+      {modalShow && (
+        <LoginModal
+          modalShow={modalShow}
+          closeModalHandler={closeModalHandler}
+        />
+      )}
+      {!modalShow && (
+        <>
+          <Navbar />
+          <DashboardContainer />
+        </>
+      )}
     </>
   );
 }
