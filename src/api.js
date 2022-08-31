@@ -2,7 +2,7 @@
 import dashboardState from './dashboardState.json';
 
 const generateId = () => new Date().getTime();
-const responseDelay = 1000;
+const RESPONSE_DELAY = 1000;
 
 const asyncTimeout = (ms) => {
   return new Promise((resolve) => {
@@ -11,15 +11,15 @@ const asyncTimeout = (ms) => {
 };
 
 const exportJSONToLocalStorage = async () => {
-  if (!localStorage.getItem('data')) {
-    localStorage.setItem('data', JSON.stringify(dashboardState));
+  if (!localStorage.getItem('db')) {
+    localStorage.setItem('db', JSON.stringify(dashboardState));
   }
 };
 
 const fetchDashboard = async () => {
   await exportJSONToLocalStorage();
-  await asyncTimeout(responseDelay);
-  const data = localStorage.getItem('data');
+  await asyncTimeout(RESPONSE_DELAY);
+  const data = localStorage.getItem('db');
   if (data) {
     const parsedData = await JSON.parse(data);
     return parsedData.dashboard;
@@ -28,13 +28,13 @@ const fetchDashboard = async () => {
 };
 
 const signInUser = async (user) => {
-  await asyncTimeout(responseDelay);
+  await asyncTimeout(RESPONSE_DELAY);
   localStorage.setItem('currenUser', JSON.stringify(user));
   return true;
 };
 
 const fetchCurrentUser = async () => {
-  await asyncTimeout(responseDelay);
+  await asyncTimeout(RESPONSE_DELAY);
   const response = localStorage.getItem('currentUser');
   if (response) {
     return await JSON.parse(response);
