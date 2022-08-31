@@ -11,14 +11,12 @@ const DashboardContainer = () => {
     setCounter(counter + 1);
   };
 
-  const fetchData = async () => {
-    const dashboard = await fetchDashboard();
-    setDashboard(dashboard);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const dashboard = await fetchDashboard();
+      setDashboard(dashboard);
+    };
     fetchData();
-    console.log(dashboard);
   }, [counter]);
 
   return (
