@@ -1,0 +1,11 @@
+.textarea-autosize {
+  resize: none;
+  overflow: hidden;
+}
+
+.textarea-autosize-btn {
+  width: fit-content;
+  margin-top: 10px;
+  margin-right: 10px;
+  flex-shrink: 2;
+}
