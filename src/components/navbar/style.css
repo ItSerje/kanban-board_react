@@ -1,0 +1,10 @@
+.current-user-name {
+  font-weight: bold;
+}
+
+.logout {
+  cursor: pointer;
+}
+.logout:hover {
+  color: var(--bs-blue);
+}
