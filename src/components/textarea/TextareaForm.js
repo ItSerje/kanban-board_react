@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './style.css';
 
-const TextareaForm = ({ text, placeholder = '', closeForm }) => {
+const TextareaForm = ({ text, placeholder = '', closeForm, callback }) => {
   console.log(text);
   const [inputValue, setInputValue] = useState(text);
   const el = useRef(null);
@@ -10,11 +10,6 @@ const TextareaForm = ({ text, placeholder = '', closeForm }) => {
   const autoResizeTextarea = () => {
     el.current.style.height = 'auto';
     el.current.style.height = el.current.scrollHeight + 'px';
-  };
-
-  const updateCardHandler = () => {
-    console.log('closing...');
-    closeForm();
   };
 
   useEffect(() => {
@@ -36,7 +31,9 @@ const TextareaForm = ({ text, placeholder = '', closeForm }) => {
       <Button
         variant='primary'
         className='textarea-autosize-btn'
-        onClick={updateCardHandler}
+        onClick={() => {
+          callback();
+        }}
       >
         Save
       </Button>
