@@ -1,0 +1,32 @@
+/* .card-form__block {
+  display: flex;
+}
+
+.card-form__block-item {
+  flex-grow: 1;
+} */
+
+.card-form__icon-column {
+  max-width: 30px;
+}
+
+.card-form__delete-btn-container {
+  text-align: right;
+}
+
+.card-form__delete-btn {
+  border: none;
+  background-color: #fff;
+}
+
+.full-card__section {
+  margin-bottom: 20px;
+}
+
+.full-card__card-author {
+  font-weight: bold;
+}
+
+.card-form__card-author-container {
+  text-align: right;
+}
