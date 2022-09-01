@@ -42,6 +42,7 @@ const DashboardContainer = (currentUser) => {
           currentCardId={currentCardId}
           currentColumnId={currentColumnId}
           refreshDashboard={refreshDashboard}
+          showCardForm={showCardForm}
           closeCardFormHandler={closeCardFormHandler}
         />
       )}

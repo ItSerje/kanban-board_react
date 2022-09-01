@@ -1,7 +1,12 @@
 import CardsListContainer from '../cardsList/CardsListContainer';
 import './style.css';
 
-const Dashboard = ({ dashboard, refreshDashboard, openCardHandler }) => {
+const Dashboard = ({
+  dashboard,
+  refreshDashboard,
+  openCardHandler,
+  showCardForm,
+}) => {
   return (
     <>
       {dashboard && (
@@ -15,6 +20,7 @@ const Dashboard = ({ dashboard, refreshDashboard, openCardHandler }) => {
                 name={name}
                 columnId={id}
                 refreshDashboard={refreshDashboard}
+                showCardForm={showCardForm}
                 openCardHandler={openCardHandler}
               />
             );

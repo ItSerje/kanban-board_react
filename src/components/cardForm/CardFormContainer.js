@@ -6,6 +6,7 @@ const CardFormContainer = ({
   refreshDashboard,
   currentCardId,
   currentColumnId,
+  showCardForm,
   closeCardFormHandler,
 }) => {
   const card = dashboard.columns
@@ -15,6 +16,7 @@ const CardFormContainer = ({
   return (
     <CardForm
       card={card}
+      showCardForm={showCardForm}
       closeCardFormHandler={closeCardFormHandler}
     ></CardForm>
   );
