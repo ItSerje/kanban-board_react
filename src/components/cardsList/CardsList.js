@@ -4,7 +4,7 @@ import BootstrapForm from 'react-bootstrap/Form';
 import './style.css';
 import Card from '../card/Card';
 
-const CardsList = ({ cards, name, columnId, openCardHandler }) => {
+const CardsList = ({ cards, name }) => {
   const [isNameEditMode, setNameEditMode] = useState(false);
   const [inputValue, setInputValue] = useState(name);
 
@@ -53,8 +53,8 @@ const CardsList = ({ cards, name, columnId, openCardHandler }) => {
           <Card
             card={card}
             key={card.id}
-            columnId={columnId}
-            openCardHandler={openCardHandler}
+            // columnId={columnId}
+            // openCardHandler={openCardHandler}
           />
         ))}
       </BootstrapCard.Body>
