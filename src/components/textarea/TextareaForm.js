@@ -6,8 +6,8 @@ import autoResizeTextarea from '../../utils/autoresize-textarea';
 const TextareaForm = ({
   text = '',
   placeholder = '',
-  cancelCallback = Function(),
-  submitCallback = Function(),
+  cancelCallback = null,
+  submitCallback = null,
 }) => {
   console.log(text);
   const [inputValue, setInputValue] = useState(text);
