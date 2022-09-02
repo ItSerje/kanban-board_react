@@ -9,10 +9,7 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
   const [titleValue, setTitleValue] = useState(card.title);
   const [textValue, setTextValue] = useState(card.text);
-  const { currentUser } = useAppContext(); // refactor to useAppContext || false
-  const isOwner = card.author === currentUser ? true : false;
-  const titleInputRef = useRef(null);
-  const textInputRef = useRef(null);
+  const { currentUser } = useAppContext();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,12 +17,14 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
     updateCardHandler(newCard);
   };
 
-  useEffect(() => {
-    if (isEditingMode) {
-      autoResizeTextarea(titleInputRef.current);
-      autoResizeTextarea(textInputRef.current);
-    }
-  }, [titleValue, textValue, isEditingMode]);
+  useEffect(
+    () =>
+      document.querySelectorAll('.textarea-autosize').forEach((el) => {
+        console.log(el);
+        autoResizeTextarea(el);
+      }),
+    [titleValue, textValue, isEditingMode]
+  );
 
   return (
     <Container>
@@ -49,19 +48,20 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
           </Col>
           <Col>
             <Row>
-              {!isEditingMode && <h2>{card.title}</h2>}
-              {isEditingMode && isOwner && (
-                <Form.Control
-                  as='textarea'
-                  ref={titleInputRef}
-                  value={titleValue}
-                  onChange={(e) => {
-                    setTitleValue(e.target.value);
-                  }}
-                  required
-                  className='textarea-autosize'
-                />
-              )}
+              <h5>Title</h5>
+            </Row>
+            <Row>
+              <Form.Control
+                as='textarea'
+                rows={1}
+                value={titleValue}
+                onChange={(e) => {
+                  setTitleValue(e.target.value);
+                }}
+                required
+                disabled={isEditingMode ? false : true}
+                className='textarea-autosize'
+              />
             </Row>
             {/* <Row>
                 <p>
@@ -77,65 +77,63 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
           <Col>
             <Row>
               <h5>Description</h5>
-              {!isEditingMode && <p>{card.text}</p>}
-              {isEditingMode && isOwner && (
-                <Form.Control
-                  as='textarea'
-                  ref={textInputRef}
-                  value={textValue}
-                  onChange={(e) => {
-                    setTextValue(e.target.value);
-                  }}
-                  className='textarea-autosize'
-                />
-              )}
+
+              <Form.Control
+                as='textarea'
+                rows={1}
+                value={textValue}
+                onChange={(e) => {
+                  setTextValue(e.target.value);
+                }}
+                disabled={isEditingMode ? false : true}
+                className='textarea-autosize textarea__text'
+              />
             </Row>
           </Col>
         </Row>
-        {isOwner && (
-          <Row className='full-card__section'>
-            <Col className='card-form__icon-column'></Col>
-            {!isEditingMode && (
-              <Col>
+
+        <Row className='full-card__section'>
+          <Col className='card-form__icon-column'></Col>
+          {!isEditingMode && (
+            <Col>
+              <Button
+                variant='primary'
+                className='textarea-autosize-btn'
+                onClick={() => setIsEditingMode(true)}
+              >
+                Edit
+              </Button>
+            </Col>
+          )}
+          {isEditingMode && (
+            <Row>
+              <Col className='full-card-form__save-cancel-btns-container'>
                 <Button
-                  variant='primary'
+                  type='submit'
+                  variant='success'
                   className='textarea-autosize-btn'
-                  onClick={() => setIsEditingMode(true)}
                 >
-                  Edit
+                  Save
+                </Button>
+                <Button
+                  variant='secondary'
+                  className='textarea-autosize-btn'
+                  onClick={() => setIsEditingMode(false)}
+                >
+                  Cancel
                 </Button>
               </Col>
-            )}
-            {isEditingMode && (
-              <Row>
-                <Col className='full-card-form__save-cancel-btns-container'>
-                  <Button
-                    type='submit'
-                    variant='success'
-                    className='textarea-autosize-btn'
-                  >
-                    Save
-                  </Button>
-                  <Button
-                    variant='secondary'
-                    className='textarea-autosize-btn'
-                    onClick={() => setIsEditingMode(false)}
-                  >
-                    Cancel
-                  </Button>
-                </Col>
-                <Col className='full-card-form__delete-btn-container'>
-                  <button
-                    className='card-form__delete-btn'
-                    onClick={() => deleteCardHandler(card.id)}
-                  >
-                    🗑️
-                  </button>
-                </Col>
-              </Row>
-            )}
-          </Row>
-        )}
+              <Col className='full-card-form__delete-btn-container'>
+                <button
+                  className='card-form__delete-btn'
+                  onClick={() => deleteCardHandler(card.id)}
+                >
+                  🗑️
+                </button>
+              </Col>
+            </Row>
+          )}
+        </Row>
       </Form>
     </Container>
   );
