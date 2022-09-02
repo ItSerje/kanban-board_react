@@ -6,7 +6,7 @@ import { useAppContext } from '../../context/app-context';
 import './style.css';
 
 const DashboardContainer = () => {
-  let { counter: trigger } = useAppContext();
+  let { refreshDashboardTrigger } = useAppContext();
   const [dashboard, setDashboard] = useState();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const DashboardContainer = () => {
       setDashboard(dashboard);
     };
     fetchData();
-  }, [trigger]);
+  }, [refreshDashboardTrigger]);
 
   return <Dashboard dashboard={dashboard} />;
 };

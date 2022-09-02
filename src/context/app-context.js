@@ -4,10 +4,10 @@ const AppContext = React.createContext();
 
 export const AppContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [counter, setCounter] = useState(null);
+  const [refreshDashboardTrigger, setRefreshDashboardTrigger] = useState(0);
 
   const refreshDashboard = () => {
-    setCounter(counter + 1);
+    setRefreshDashboardTrigger(refreshDashboardTrigger + 1);
   };
 
   return (
@@ -15,7 +15,7 @@ export const AppContextProvider = ({ children }) => {
       value={{
         currentUser,
         setCurrentUser,
-        counter,
+        refreshDashboardTrigger,
         refreshDashboard,
       }}
     >
