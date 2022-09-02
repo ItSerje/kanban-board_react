@@ -5,7 +5,7 @@ import FullCardContainer from '../cardForm/FullCardContainer';
 
 import './style.css';
 
-const Card = ({ card }) => {
+const Card = ({ card, columnName }) => {
   const { id, comments, title } = card;
 
   const [isModalShown, setIsModalShown] = useState(false);
@@ -19,7 +19,11 @@ const Card = ({ card }) => {
           closeModal={closeModal}
           headerTitle='Card Details'
         >
-          <FullCardContainer cardId={id} closeModal={closeModal} />
+          <FullCardContainer
+            cardId={id}
+            columnName={columnName}
+            closeModal={closeModal}
+          />
         </Modal>
       )}
       <BootstrapCard onClick={() => setIsModalShown(true)}>

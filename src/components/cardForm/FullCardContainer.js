@@ -4,7 +4,7 @@ import FullCard from './FullCard';
 import Spinner from 'react-bootstrap/Spinner';
 import { useAppContext } from '../../context/app-context';
 
-const FullCardContainer = ({ cardId, closeModal }) => {
+const FullCardContainer = ({ cardId, columnName, closeModal }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [card, setCard] = useState(null);
   const [refreshCard, setRefreshCard] = useState(0);
@@ -39,6 +39,7 @@ const FullCardContainer = ({ cardId, closeModal }) => {
   return (
     <FullCard
       card={card}
+      columnName={columnName}
       closeModal={closeModal}
       updateCardHandler={updateCardHandler}
       deleteCardHandler={deleteCardHandler}

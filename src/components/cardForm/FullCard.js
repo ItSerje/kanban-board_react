@@ -5,7 +5,12 @@ import { Form } from 'react-bootstrap';
 import './style.css';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
 
-const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
+const FullCard = ({
+  card,
+  columnName,
+  updateCardHandler,
+  deleteCardHandler,
+}) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
   const [titleValue, setTitleValue] = useState(card.title);
   const [textValue, setTextValue] = useState(card.text);
@@ -29,14 +34,16 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
     <Container>
       <Form onSubmit={submitHandler}>
         <Row className='full-card__section'>
-          <Col className='card-form__icon-column'></Col>
           <Col>
-            <Row className='card-form__card-author-container'>
-              <span>
-                Author:{' '}
-                <span className='full-card__card-author'>{card.author}</span>
-              </span>
-            </Row>
+            <p>
+              in list <a href='#'>{columnName}</a>
+            </p>
+          </Col>
+          <Col className='card-form__card-author-container'>
+            <span>
+              Author:{' '}
+              <span className='full-card__card-author'>{card.author}</span>
+            </span>
           </Col>
         </Row>
         <Row className='full-card__section'>
@@ -60,11 +67,6 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
                 className='textarea-autosize'
               />
             </Row>
-            {/* <Row>
-                <p>
-                  in list <a href='#'>{columnName}</a>
-                </p>
-              </Row> */}
           </Col>
         </Row>
         <Row className='full-card__section'>
