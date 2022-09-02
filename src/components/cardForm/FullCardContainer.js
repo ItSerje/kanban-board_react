@@ -14,13 +14,13 @@ const FullCardContainer = ({ cardId, closeModal }) => {
   const updateCardHandler = async (card) => {
     await updateCard(card);
     setRefreshCard(refreshCard + 1);
-    await refreshDashboard();
+    refreshDashboard();
   };
 
   const deleteCardHandler = async (id) => {
     await deleteCard(id);
     closeModal();
-    await refreshDashboard();
+    refreshDashboard();
   };
 
   useEffect(() => {
