@@ -17,18 +17,19 @@ const CardsList = ({ cards, name, updateColumnNameHandler }) => {
           setNameEditMode(true);
         }}
       >
-        {isNameEditMode ? (
+        {!isNameEditMode ? (
+          <div className='cards-list__column-name'>{name}</div>
+        ) : (
           <BootstrapForm>
-            <BootstrapForm.Group
-              className='mb-3'
-              controlId='exampleForm.ControlTextarea1'
-            >
+            <BootstrapForm.Group controlId='exampleForm.ControlTextarea1'>
               <BootstrapForm.Control
                 as='textarea'
+                rows={1}
                 autoFocus
                 className='card-list__column-name-input'
                 value={columnName}
                 onFocus={(e) => {
+                  autoResizeTextarea(e.target);
                   e.target.select();
                 }}
                 onChange={(e) => {
@@ -48,8 +49,6 @@ const CardsList = ({ cards, name, updateColumnNameHandler }) => {
               />
             </BootstrapForm.Group>
           </BootstrapForm>
-        ) : (
-          name
         )}
       </BootstrapCard.Header>
       <BootstrapCard.Body bsPrefix='cards-list-body'>
@@ -58,7 +57,7 @@ const CardsList = ({ cards, name, updateColumnNameHandler }) => {
         ))}
       </BootstrapCard.Body>
       <BootstrapCard.Footer bsPrefix='cards-list-footer'>
-        + Add a card
+        <div className='cards-list__add-card'>+ Add a card</div>
       </BootstrapCard.Footer>
     </BootstrapCard>
   );

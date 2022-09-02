@@ -30,9 +30,16 @@
 .cards-list-header {
   flex: 0 0 auto;
   min-height: 20px;
-  padding: 10px 8px;
+  /* height: fit-content; */
+  padding: 10px 12px;
   position: relative;
   border: none;
+}
+
+.cards-list__column-name {
+  overflow-wrap: break-word;
+
+  height: fit-content;
 }
 
 .cards-list-body {
@@ -46,10 +53,22 @@
 }
 
 .cards-list-footer {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  max-height: 38px;
-  min-height: 38px;
+  margin: 5px 12px;
+  vertical-align: middle;
+
+      flex: 0 0 auto;
+    min-height: 20px;
+    padding: 10px 12px;
+    position: relative;
+    border: none; */
+
+  flex: 0 0 auto;
+  min-height: 20px;
+  padding: 10px 12px;
+  position: relative;
+  border: none;
 }
 
 .card-list__column-name-input {
