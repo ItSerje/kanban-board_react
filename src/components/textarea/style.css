@@ -5,7 +5,7 @@
 
 .textarea-autosize-btn {
   width: fit-content;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-right: 10px;
   flex-shrink: 2;
 }
