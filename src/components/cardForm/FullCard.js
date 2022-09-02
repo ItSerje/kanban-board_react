@@ -35,9 +35,7 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
             <Row className='card-form__card-author-container'>
               <span>
                 Author:{' '}
-                <span className='full-card__card-author'>
-                  {card.author === currentUser ? 'You' : card.author}
-                </span>
+                <span className='full-card__card-author'>{card.author}</span>
               </span>
             </Row>
           </Col>
