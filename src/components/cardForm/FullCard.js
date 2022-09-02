@@ -20,8 +20,6 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
     updateCardHandler(newCard);
   };
 
-  console.log('here', titleInputRef);
-
   useEffect(() => {
     if (isEditingMode) {
       autoResizeTextarea(titleInputRef.current);
