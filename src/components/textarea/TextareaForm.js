@@ -2,12 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './style.css';
 
-const TextareaForm = ({
-  text,
-  placeholder = '',
-  closeAllTextAreas,
-  callback,
-}) => {
+const TextareaForm = ({ text, placeholder = '', closeForm, callback }) => {
   console.log(text);
   const [inputValue, setInputValue] = useState(text);
   const el = useRef(null);
@@ -45,7 +40,7 @@ const TextareaForm = ({
       <Button
         variant='secondary'
         className='textarea-autosize-btn'
-        onClick={closeAllTextAreas}
+        onClick={closeForm}
       >
         Cancel
       </Button>
