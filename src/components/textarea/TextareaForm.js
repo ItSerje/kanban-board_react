@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './style.css';
 
-const TextareaForm = ({ text, placeholder = '', closeForm, callback }) => {
+const TextareaForm = ({
+  name = null,
+  text,
+  placeholder = '',
+  closeForm,
+  callback = null,
+}) => {
   console.log(text);
   const [inputValue, setInputValue] = useState(text);
   const el = useRef(null);
@@ -20,6 +26,7 @@ const TextareaForm = ({ text, placeholder = '', closeForm, callback }) => {
     <>
       <Form.Control
         as='textarea'
+        name={name}
         ref={el}
         autoFocus
         value={inputValue}
@@ -32,7 +39,7 @@ const TextareaForm = ({ text, placeholder = '', closeForm, callback }) => {
         variant='primary'
         className='textarea-autosize-btn'
         onClick={() => {
-          callback();
+          callback(name, inputValue);
         }}
       >
         Save
