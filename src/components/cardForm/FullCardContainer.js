@@ -11,9 +11,8 @@ const FullCardContainer = ({ cardId, closeModal }) => {
 
   const { refreshDashboard } = useAppContext();
 
-  const updateCardHandler = async (inputName, updatedValue) => {
-    const updatedCard = { ...card, [inputName]: updatedValue.trim() };
-    await updateCard(updatedCard);
+  const updateCardHandler = async (card) => {
+    await updateCard(card);
     setRefreshCard(refreshCard + 1);
     await refreshDashboard();
   };
