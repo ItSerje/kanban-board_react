@@ -1,12 +1,13 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import BootstrapCard from 'react-bootstrap/Card';
 import BootstrapForm from 'react-bootstrap/Form';
-import './style.css';
+import autoResizeTextarea from '../../utils/autoresize-textarea';
 import Card from '../card/Card';
+import './style.css';
 
-const CardsList = ({ cards, name }) => {
+const CardsList = ({ cards, name, updateColumnNameHandler }) => {
   const [isNameEditMode, setNameEditMode] = useState(false);
-  const [inputValue, setInputValue] = useState(name);
+  const [columnName, setColumnName] = useState(name);
 
   return (
     <BootstrapCard bsPrefix='cards-list'>
@@ -24,21 +25,24 @@ const CardsList = ({ cards, name }) => {
             >
               <BootstrapForm.Control
                 as='textarea'
-                rows={1}
                 autoFocus
-                value={inputValue}
+                className='card-list__column-name-input'
+                value={columnName}
                 onFocus={(e) => {
                   e.target.select();
                 }}
                 onChange={(e) => {
-                  setInputValue(e.target.value);
+                  autoResizeTextarea(e.target);
+                  setColumnName(e.target.value);
                 }}
                 onKeyDown={(e) => {
                   if (['Enter', 'NumpadEnter', 'Escape'].includes(e.key)) {
+                    updateColumnNameHandler(columnName);
                     setNameEditMode(false);
                   }
                 }}
                 onBlur={() => {
+                  updateColumnNameHandler(columnName);
                   setNameEditMode(false);
                 }}
               />
@@ -50,12 +54,7 @@ const CardsList = ({ cards, name }) => {
       </BootstrapCard.Header>
       <BootstrapCard.Body bsPrefix='cards-list-body'>
         {cards.map((card) => (
-          <Card
-            card={card}
-            key={card.id}
-            // columnId={columnId}
-            // openCardHandler={openCardHandler}
-          />
+          <Card card={card} key={card.id} />
         ))}
       </BootstrapCard.Body>
       <BootstrapCard.Footer bsPrefix='cards-list-footer'>

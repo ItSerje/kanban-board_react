@@ -51,3 +51,8 @@
   max-height: 38px;
   min-height: 38px;
 }
+
+.card-list__column-name-input {
+  resize: none;
+  overflow: hidden;
+}
