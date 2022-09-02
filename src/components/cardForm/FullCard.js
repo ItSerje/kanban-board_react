@@ -41,14 +41,16 @@ const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
             {!isTitleEdited && (
               <h2
                 onClick={() => {
-                  closeAllTextAreas();
-                  setIsTitleEdited(true);
+                  if (isOwner) {
+                    closeAllTextAreas();
+                    setIsTitleEdited(true);
+                  }
                 }}
               >
                 {card.title}
               </h2>
             )}
-            {isTitleEdited && (
+            {isTitleEdited && isOwner && (
               <TextareaForm
                 text={card.title}
                 closeForm={closeAllTextAreas}
@@ -73,14 +75,16 @@ const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
             {!isTextEdited && (
               <p
                 onClick={() => {
-                  closeAllTextAreas();
-                  setIsTextEdited(true);
+                  if (isOwner) {
+                    closeAllTextAreas();
+                    setIsTextEdited(true);
+                  }
                 }}
               >
                 {card.text}
               </p>
             )}
-            {isTextEdited && (
+            {isTextEdited && isOwner && (
               <TextareaForm
                 text={card.text}
                 closeAllTextAreas={closeAllTextAreas}
@@ -89,14 +93,19 @@ const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
           </Row>
         </Col>
       </Row>
-      <Row className='full-card__section'>
-        <Col className='card-form__icon-column'></Col>
-        <Col className='card-form__delete-btn-container'>
-          <button className='card-form__delete-btn' onClick={deleteCardHandler}>
-            🗑️
-          </button>
-        </Col>
-      </Row>
+      {isOwner && (
+        <Row className='full-card__section'>
+          <Col className='card-form__icon-column'></Col>
+          <Col className='card-form__delete-btn-container'>
+            <button
+              className='card-form__delete-btn'
+              onClick={deleteCardHandler}
+            >
+              🗑️
+            </button>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };
