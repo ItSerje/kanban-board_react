@@ -41,6 +41,29 @@ const fetchCardById = async (id) => {
   return null;
 };
 
+const createCard = async (title, columnId, currentUser) => {
+  await asyncTimeout(RESPONSE_DELAY);
+  const db = localStorage.getItem('db');
+  const parsedDb = await JSON.parse(db);
+  const newColumns = parsedDb.dashboard.columns.map((column) => {
+    if (column.id === columnId) {
+      column.cards.push({
+        id: generateId().toString(),
+        author: currentUser,
+        title: title,
+        text: '',
+        comments: [],
+      });
+      return column;
+    }
+    return column;
+  });
+  const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
+  const updatedDb = { ...parsedDb, dashboard: updatedDashboard };
+  localStorage.setItem('db', JSON.stringify(updatedDb));
+  return null; // mb true?
+};
+
 const updateCard = async (card) => {
   await asyncTimeout(RESPONSE_DELAY);
   const db = localStorage.getItem('db');
@@ -98,6 +121,7 @@ export {
   updateCard,
   deleteCard,
   updateColumnName,
+  createCard,
 };
 
 // заготовка для рефакторинга

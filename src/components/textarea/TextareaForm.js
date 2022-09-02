@@ -9,7 +9,6 @@ const TextareaForm = ({
   cancelCallback = null,
   submitCallback = null,
 }) => {
-  console.log(text);
   const [inputValue, setInputValue] = useState(text);
 
   return (
@@ -17,6 +16,7 @@ const TextareaForm = ({
       <Form.Control
         as='textarea'
         autoFocus
+        placeholder={placeholder}
         value={inputValue}
         onChange={(e) => {
           autoResizeTextarea(e.target);
@@ -29,6 +29,7 @@ const TextareaForm = ({
         className='textarea-autosize-btn'
         onClick={() => {
           submitCallback(inputValue);
+          cancelCallback();
         }}
       >
         Save

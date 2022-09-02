@@ -1,13 +1,18 @@
 import CardsList from './CardsList';
-import { updateColumnName } from '../../api';
+import { updateColumnName, createCard } from '../../api';
 import { useAppContext } from '../../context/app-context';
 import './style.css';
 
 const CardsListContainer = ({ cards, name, columnId }) => {
-  const { refreshDashboard } = useAppContext();
+  const { currentUser, refreshDashboard } = useAppContext();
 
   const updateColumnNameHandler = async (newName) => {
     await updateColumnName(columnId, newName);
+    refreshDashboard();
+  };
+
+  const createCardHandler = async (title) => {
+    await createCard(title, columnId, currentUser);
     refreshDashboard();
   };
 
@@ -17,6 +22,7 @@ const CardsListContainer = ({ cards, name, columnId }) => {
         cards={cards}
         name={name}
         updateColumnNameHandler={updateColumnNameHandler}
+        createCardHandler={createCardHandler}
       />
     </div>
   );

@@ -2,11 +2,19 @@ import { useState, useEffect } from 'react';
 import BootstrapCard from 'react-bootstrap/Card';
 import BootstrapForm from 'react-bootstrap/Form';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
+import TextareaForm from '../textarea/TextareaForm';
+
 import Card from '../card/Card';
 import './style.css';
 
-const CardsList = ({ cards, name, updateColumnNameHandler }) => {
+const CardsList = ({
+  cards,
+  name,
+  updateColumnNameHandler,
+  createCardHandler,
+}) => {
   const [isNameEditMode, setNameEditMode] = useState(false);
+  const [isAddCardMode, setIsAddCardMode] = useState(false);
   const [columnName, setColumnName] = useState(name);
 
   return (
@@ -57,7 +65,23 @@ const CardsList = ({ cards, name, updateColumnNameHandler }) => {
         ))}
       </BootstrapCard.Body>
       <BootstrapCard.Footer bsPrefix='cards-list-footer'>
-        <div className='cards-list__add-card'>+ Add a card</div>
+        {!isAddCardMode && (
+          <div
+            className='cards-list__add-card'
+            onClick={() => {
+              setIsAddCardMode(true);
+            }}
+          >
+            + Add a card
+          </div>
+        )}
+        {isAddCardMode && (
+          <TextareaForm
+            placeholder='Enter your card title'
+            cancelCallback={() => setIsAddCardMode(false)}
+            submitCallback={createCardHandler}
+          />
+        )}
       </BootstrapCard.Footer>
     </BootstrapCard>
   );
