@@ -80,7 +80,17 @@ const deleteCard = async (id) => {
   return true;
 };
 
-export { fetchDashboard, fetchCardById, updateCard, deleteCard };
+const updateColumnName = async (columnId, newName) => {
+  console.log('updateColumnName');
+};
+
+export {
+  fetchDashboard,
+  fetchCardById,
+  updateCard,
+  deleteCard,
+  updateColumnName,
+};
 
 // заготовка для рефакторинга
 const updateLocalStorage = async (action = null, card = null, id = null) => {
