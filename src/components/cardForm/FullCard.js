@@ -4,7 +4,7 @@ import { useAppContext } from '../../context/app-context';
 import TextareaForm from '../textarea/TextareaForm';
 import './style.css';
 
-const CardForm = ({ card, closeModal }) => {
+const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
   const [isTitleEdited, setIsTitleEdited] = useState(false);
   const [isTextEdited, setIsTextEdited] = useState(false);
 
@@ -14,13 +14,6 @@ const CardForm = ({ card, closeModal }) => {
   };
 
   const { currentUser } = useAppContext();
-
-  const handleUpdate = (e) => {};
-
-  const handleDelete = (e) => {
-    // delete request to api
-    closeModal();
-  };
 
   console.log(typeof currentUser, typeof card.author);
 
@@ -84,7 +77,10 @@ const CardForm = ({ card, closeModal }) => {
               </p>
             )}
             {isTextEdited && (
-              <TextareaForm text={card.text} closeForm={closeAllTextAreas} />
+              <TextareaForm
+                text={card.text}
+                closeAllTextAreas={closeAllTextAreas}
+              />
             )}
           </Row>
         </Col>
@@ -92,7 +88,7 @@ const CardForm = ({ card, closeModal }) => {
       <Row className='full-card__section'>
         <Col className='card-form__icon-column'></Col>
         <Col className='card-form__delete-btn-container'>
-          <button className='card-form__delete-btn' onClick={handleDelete}>
+          <button className='card-form__delete-btn' onClick={deleteCardHandler}>
             🗑️
           </button>
         </Col>
