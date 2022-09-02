@@ -13,7 +13,9 @@ const Navbar = ({ logout }) => {
         <BootstrapNavbar.Toggle />
         <BootstrapNavbar.Collapse className='justify-content-end'>
           <BootstrapNavbar.Text>
-            Signed in as:{' '}
+            <BootstrapNavbar.Text className='d-none d-sm-inline'>
+              Signed in as:{' '}
+            </BootstrapNavbar.Text>
             <span className='current-user-name'>{currentUser}</span> |{' '}
             <span className='logout' onClick={logout}>
               Sign out
