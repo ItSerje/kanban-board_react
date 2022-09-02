@@ -11,6 +11,7 @@
 }
 
 .card-form__delete-btn {
+  width: fit-content;
   border: none;
   background-color: #fff;
   height: 100%;
@@ -29,6 +30,7 @@
 }
 
 .full-card-form__save-cancel-btns-container {
+  display: flex;
   vertical-align: middle;
 }
 
