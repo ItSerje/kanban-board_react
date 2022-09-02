@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Container, Col, Row, Button } from 'react-bootstrap';
+import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import { useAppContext } from '../../context/app-context';
 import { Form } from 'react-bootstrap';
 import './style.css';
@@ -12,13 +12,15 @@ const FullCard = ({
   deleteCardHandler,
 }) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [titleValue, setTitleValue] = useState(card.title);
   const [textValue, setTextValue] = useState(card.text);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const newCard = { ...card, title: titleValue, text: textValue };
-    updateCardHandler(newCard);
+    await updateCardHandler(newCard);
   };
 
   useEffect(
@@ -112,7 +114,16 @@ const FullCard = ({
                   variant='success'
                   className='textarea-autosize-btn'
                 >
-                  Save
+                  {!isLoading ? (
+                    'Save'
+                  ) : (
+                    <Spinner
+                      animation='border'
+                      variant='success'
+                      className='spinner'
+                      size='sm'
+                    />
+                  )}
                 </Button>
                 <Button
                   variant='secondary'
