@@ -1,7 +1,17 @@
 // // fake server connection
 import dashboardState from './dashboardState.json';
 
-const generateId = () => new Date().getTime();
+const generateId = (length) => {
+  let result = '';
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
+
 const RESPONSE_DELAY = 1000;
 
 const asyncTimeout = (ms) => {
@@ -48,7 +58,7 @@ const createCard = async (title, columnId, currentUser) => {
   const newColumns = parsedDb.dashboard.columns.map((column) => {
     if (column.id === columnId) {
       column.cards.push({
-        id: generateId().toString(),
+        id: generateId(20).toString(),
         author: currentUser,
         title: title,
         text: '',
