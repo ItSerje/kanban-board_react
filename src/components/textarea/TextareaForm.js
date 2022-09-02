@@ -1,32 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './style.css';
+import autoResizeTextarea from '../../utils/autoresize-textarea';
 
-const TextareaForm = ({
-  name = null,
-  text,
-  placeholder = '',
-  closeForm,
-  callback = null,
-}) => {
+const TextareaForm = ({ text, placeholder = '', callback = null }) => {
   console.log(text);
   const [inputValue, setInputValue] = useState(text);
   const el = useRef(null);
 
-  const autoResizeTextarea = () => {
-    el.current.style.height = 'auto';
-    el.current.style.height = el.current.scrollHeight + 'px';
-  };
-
   useEffect(() => {
-    autoResizeTextarea();
+    autoResizeTextarea(el.current);
   }, [inputValue]);
 
   return (
     <>
       <Form.Control
         as='textarea'
-        name={name}
         ref={el}
         autoFocus
         value={inputValue}
@@ -39,7 +28,7 @@ const TextareaForm = ({
         variant='primary'
         className='textarea-autosize-btn'
         onClick={() => {
-          callback(name, inputValue);
+          callback(inputValue);
         }}
       >
         Save
@@ -47,7 +36,7 @@ const TextareaForm = ({
       <Button
         variant='secondary'
         className='textarea-autosize-btn'
-        onClick={closeForm}
+        onClick={callback}
       >
         Cancel
       </Button>
