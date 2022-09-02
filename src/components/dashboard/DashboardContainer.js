@@ -6,8 +6,7 @@ import { useAppContext } from '../../context/app-context';
 import './style.css';
 
 const DashboardContainer = () => {
-  const { contextCounter } = useAppContext();
-  const [counter, setCounter] = useState(0);
+  let { counter: trigger } = useAppContext();
   const [dashboard, setDashboard] = useState();
 
   useEffect(() => {
@@ -16,11 +15,7 @@ const DashboardContainer = () => {
       setDashboard(dashboard);
     };
     fetchData();
-  }, [counter]);
-
-  useEffect(() => {
-    setCounter(contextCounter);
-  }, [contextCounter]);
+  }, [trigger]);
 
   return <Dashboard dashboard={dashboard} />;
 };

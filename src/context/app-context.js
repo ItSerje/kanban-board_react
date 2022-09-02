@@ -1,21 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 const AppContext = React.createContext();
 
 export const AppContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [counter, setCounter] = useState(null);
 
-  const refreshDashboard = (num) => {
-    return num + 1;
+  const refreshDashboard = () => {
+    setCounter(counter + 1);
   };
-
-  //   useEffect(() => {}, []);
 
   return (
     <AppContext.Provider
       value={{
         currentUser,
         setCurrentUser,
+        counter,
         refreshDashboard,
       }}
     >
