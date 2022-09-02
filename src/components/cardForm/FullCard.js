@@ -52,6 +52,7 @@ const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
             )}
             {isTitleEdited && isOwner && (
               <TextareaForm
+                name='title'
                 text={card.title}
                 closeForm={closeAllTextAreas}
                 callback={updateCardHandler}
@@ -86,8 +87,10 @@ const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
             )}
             {isTextEdited && isOwner && (
               <TextareaForm
+                name='text'
                 text={card.text}
-                closeAllTextAreas={closeAllTextAreas}
+                closeForm={closeAllTextAreas}
+                callback={updateCardHandler}
               />
             )}
           </Row>
@@ -99,7 +102,7 @@ const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
           <Col className='card-form__delete-btn-container'>
             <button
               className='card-form__delete-btn'
-              onClick={deleteCardHandler}
+              onClick={() => deleteCardHandler(card.id)}
             >
               🗑️
             </button>
