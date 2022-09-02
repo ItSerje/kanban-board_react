@@ -41,4 +41,71 @@ const fetchCardById = async (id) => {
   return null;
 };
 
-export { fetchDashboard, fetchCardById };
+const updateCard = async (card) => {
+  await asyncTimeout(RESPONSE_DELAY);
+  const db = localStorage.getItem('db');
+  const parsedDb = await JSON.parse(db);
+
+  const newColumns = parsedDb.dashboard.columns.map((column) => {
+    const newCards = column.cards.map((oldCard) =>
+      oldCard.id === card.id ? card : oldCard
+    );
+    console.log(newCards);
+    column.cards = newCards;
+    return column;
+  });
+  const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
+  const updatedDb = { ...parsedDb, dashboard: updatedDashboard };
+
+  localStorage.setItem('db', JSON.stringify(updatedDb));
+  return null; // mb true?
+};
+
+const deleteCard = async (id) => {
+  await asyncTimeout(RESPONSE_DELAY);
+  const db = localStorage.getItem('db');
+  const parsedDb = await JSON.parse(db);
+
+  const newColumns = parsedDb.dashboard.columns.map((column) => {
+    const newCards = column.cards.filter((oldCard) => oldCard.id !== id);
+    column.cards = newCards;
+    return column;
+  });
+  const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
+  const updatedDb = { ...parsedDb, dashboard: updatedDashboard };
+
+  console.log(updatedDb);
+
+  localStorage.setItem('db', JSON.stringify(updatedDb));
+  return true;
+};
+
+export { fetchDashboard, fetchCardById, updateCard, deleteCard };
+
+// заготовка для рефакторинга
+const updateLocalStorage = async (action = null, card = null, id = null) => {
+  const db = localStorage.getItem('db');
+  const parsedDb = await JSON.parse(db);
+
+  const newColumns = parsedDb.dashboard.columns.map((column) => {
+    if (action === 'updateCard') {
+      const newCards = column.cards.map((oldCard) =>
+        oldCard.id === card.id ? card : oldCard
+      );
+      column.cards = newCards;
+      return column;
+    }
+
+    if (action === 'deleteCard') {
+      const newCards = column.cards.filter((oldCard) => oldCard.id !== id);
+      column.cards = newCards;
+      return column;
+    }
+    return column;
+  });
+  const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
+  const updatedDb = { ...parsedDb, dashboard: updatedDashboard };
+
+  localStorage.setItem('db', JSON.stringify(updatedDb));
+  return null; // mb true?
+};
