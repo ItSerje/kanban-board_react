@@ -9,7 +9,6 @@ const FullCard = ({ card, updateCardHandler, deleteCardHandler }) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
   const [titleValue, setTitleValue] = useState(card.title);
   const [textValue, setTextValue] = useState(card.text);
-  const { currentUser } = useAppContext();
 
   const submitHandler = (e) => {
     e.preventDefault();

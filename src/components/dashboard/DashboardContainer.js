@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchDashboard } from '../../api';
 import Dashboard from './Dashboard';
-// import FullCardContainer from '../cardForm/FullCardContainer';
 import { useAppContext } from '../../context/app-context';
 import './style.css';
 
