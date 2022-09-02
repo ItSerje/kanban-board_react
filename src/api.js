@@ -50,13 +50,11 @@ const updateCard = async (card) => {
     const newCards = column.cards.map((oldCard) =>
       oldCard.id === card.id ? card : oldCard
     );
-    console.log(newCards);
     column.cards = newCards;
     return column;
   });
   const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
   const updatedDb = { ...parsedDb, dashboard: updatedDashboard };
-
   localStorage.setItem('db', JSON.stringify(updatedDb));
   return null; // mb true?
 };
@@ -73,15 +71,25 @@ const deleteCard = async (id) => {
   });
   const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
   const updatedDb = { ...parsedDb, dashboard: updatedDashboard };
-
-  console.log(updatedDb);
-
   localStorage.setItem('db', JSON.stringify(updatedDb));
   return true;
 };
 
 const updateColumnName = async (columnId, newName) => {
-  console.log('updateColumnName');
+  await asyncTimeout(RESPONSE_DELAY);
+  const db = localStorage.getItem('db');
+  const parsedDb = await JSON.parse(db);
+
+  const newColumns = parsedDb.dashboard.columns.map((column) => {
+    if (column.id === columnId) {
+      column.name = newName;
+    }
+    return column;
+  });
+  const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
+  const updatedDb = { ...parsedDb, dashboard: updatedDashboard };
+  localStorage.setItem('db', JSON.stringify(updatedDb));
+  return true;
 };
 
 export {
