@@ -7,13 +7,13 @@ import './style.css';
 const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
   const [isTitleEdited, setIsTitleEdited] = useState(false);
   const [isTextEdited, setIsTextEdited] = useState(false);
+  const { currentUser } = useAppContext();
+  const isOwner = card.author === currentUser ? true : false;
 
   const closeAllTextAreas = () => {
     setIsTitleEdited();
     setIsTextEdited();
   };
-
-  const { currentUser } = useAppContext();
 
   console.log(typeof currentUser, typeof card.author);
 
@@ -49,7 +49,11 @@ const CardForm = ({ card, updateCardHandler, deleteCardHandler }) => {
               </h2>
             )}
             {isTitleEdited && (
-              <TextareaForm text={card.title} closeForm={closeAllTextAreas} />
+              <TextareaForm
+                text={card.title}
+                closeForm={closeAllTextAreas}
+                callback={updateCardHandler}
+              />
             )}
           </Row>
           {/* <Row>
