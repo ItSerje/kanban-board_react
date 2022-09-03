@@ -16,6 +16,7 @@ const TextareaForm = ({
     <>
       <Form.Control
         as='textarea'
+        rows={1}
         autoFocus
         placeholder={placeholder}
         value={inputValue}
