@@ -135,6 +135,7 @@ const FullCard = ({
               </Col>
               <Col className='full-card-form__delete-btn-container'>
                 <button
+                  type='button'
                   className='card-form__delete-btn'
                   onClick={() => deleteCardHandler(card.id)}
                 >
