@@ -8,6 +8,7 @@ const TextareaForm = ({
   placeholder = '',
   cancelCallback = null,
   submitCallback = null,
+  isEditingMode = true,
 }) => {
   const [inputValue, setInputValue] = useState(text);
 
@@ -23,24 +24,29 @@ const TextareaForm = ({
           setInputValue(e.target.value);
         }}
         className='textarea-autosize'
+        disabled={isEditingMode ? false : true}
       />
-      <Button
-        variant='primary'
-        className='textarea-autosize-btn'
-        onClick={() => {
-          submitCallback(inputValue);
-          cancelCallback();
-        }}
-      >
-        Save
-      </Button>
-      <Button
-        variant='secondary'
-        className='textarea-autosize-btn'
-        onClick={cancelCallback}
-      >
-        Cancel
-      </Button>
+      {isEditingMode && (
+        <>
+          <Button
+            variant='primary'
+            className='textarea-autosize-btn'
+            onClick={() => {
+              submitCallback(inputValue);
+              cancelCallback();
+            }}
+          >
+            Save
+          </Button>
+          <Button
+            variant='secondary'
+            className='textarea-autosize-btn'
+            onClick={cancelCallback}
+          >
+            Cancel
+          </Button>
+        </>
+      )}
     </>
   );
 };
