@@ -63,6 +63,13 @@ const CardsList = ({
         {cards.map((card) => (
           <Card card={card} key={card.id} columnName={name} />
         ))}
+        {isAddCardMode && (
+          <TextareaForm
+            placeholder='Enter your card title'
+            cancelCallback={() => setIsAddCardMode(false)}
+            submitCallback={createCardHandler}
+          />
+        )}
       </BootstrapCard.Body>
       <BootstrapCard.Footer bsPrefix='cards-list-footer'>
         {!isAddCardMode && (
@@ -74,13 +81,6 @@ const CardsList = ({
           >
             + Add a card
           </div>
-        )}
-        {isAddCardMode && (
-          <TextareaForm
-            placeholder='Enter your card title'
-            cancelCallback={() => setIsAddCardMode(false)}
-            submitCallback={createCardHandler}
-          />
         )}
       </BootstrapCard.Footer>
     </BootstrapCard>
