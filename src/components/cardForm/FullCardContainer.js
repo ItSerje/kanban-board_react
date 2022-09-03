@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchCardById, updateCard, deleteCard } from '../../api';
 import FullCard from './FullCard';
+import CommentsListContainer from '../commentsList/CommentsListContainer';
 import Spinner from 'react-bootstrap/Spinner';
 import { useAppContext } from '../../context/app-context';
 
@@ -37,13 +38,16 @@ const FullCardContainer = ({ cardId, columnName, closeModal }) => {
     return <Spinner animation='border' variant='primary' className='spinner' />;
   }
   return (
-    <FullCard
-      card={card}
-      columnName={columnName}
-      closeModal={closeModal}
-      updateCardHandler={updateCardHandler}
-      deleteCardHandler={deleteCardHandler}
-    ></FullCard>
+    <>
+      <FullCard
+        card={card}
+        columnName={columnName}
+        closeModal={closeModal}
+        updateCardHandler={updateCardHandler}
+        deleteCardHandler={deleteCardHandler}
+      ></FullCard>
+      <CommentsListContainer comments={card.comments} cardId={cardId} />
+    </>
   );
 };
 
