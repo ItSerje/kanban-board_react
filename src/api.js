@@ -96,6 +96,39 @@ const updateColumnName = async (columnId, newName) => {
   await replaceColumnsInLocalStorage(newColumns);
 };
 
+const createComment = async (cardId, text, currentUser) => {
+  const card = await fetchCardById(cardId);
+  card.comments.push({
+    id: generateId(20).toString(),
+    author: currentUser,
+    comment: text,
+  });
+  updateCard(card);
+};
+
+const updateComment = async (cardId, commentId, text) => {
+  const card = await fetchCardById(cardId);
+  const newComments = card.comments.map((comment) => {
+    if (comment.id && comment.id === commentId) {
+      comment.comment = text;
+      return comment;
+    }
+    return comment;
+  });
+  const updatedCard = { ...card, comments: newComments };
+  updateCard(updatedCard);
+};
+
+const deleteComment = async (cardId, commentId) => {
+  const card = await fetchCardById(cardId);
+  console.log(card);
+  const newComments = card.comments.filter(
+    (comment) => comment.id !== commentId
+  );
+  const updatedCard = { ...card, comments: newComments };
+  updateCard(updatedCard);
+};
+
 export {
   fetchDashboard,
   fetchCardById,
@@ -103,6 +136,9 @@ export {
   deleteCard,
   updateColumnName,
   createCard,
+  updateComment,
+  deleteComment,
+  createComment,
 };
 
 const getColumnsFromLocalStorage = async () => {
