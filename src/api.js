@@ -1,16 +1,6 @@
 // // fake server connection
 import dashboardState from './dashboardState.json';
-
-const generateId = (length) => {
-  let result = '';
-  const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-};
+import generateId from './utils/generateId';
 
 const RESPONSE_DELAY = 1000;
 
