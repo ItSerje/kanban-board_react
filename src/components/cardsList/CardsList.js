@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import BootstrapCard from 'react-bootstrap/Card';
 import BootstrapForm from 'react-bootstrap/Form';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
-import TextareaForm from '../textarea/TextareaForm';
+import TextareaForm from '../textareaForm/TextareaForm';
 
 import Card from '../card/Card';
 import './style.css';
