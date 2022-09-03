@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BootstrapCard from 'react-bootstrap/Card';
 import Modal from '../modal/Modal';
-import FullCardContainer from '../cardForm/FullCardContainer';
+import FullCardContainer from '../fullCard/FullCardContainer';
 
 import './style.css';
 
