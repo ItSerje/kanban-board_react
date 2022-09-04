@@ -67,3 +67,7 @@
   margin-right: 10px;
   flex-shrink: 2;
 }
+
+.spinner-container {
+  min-height: 40vh;
+}
