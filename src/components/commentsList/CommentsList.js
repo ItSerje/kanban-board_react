@@ -4,6 +4,7 @@ import Comment from '../comment/Comment';
 import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { useAppContext } from '../../context/app-context';
+import { FaRegCommentDots } from 'react-icons/fa';
 import './style.css';
 
 const Comments = ({
@@ -26,7 +27,9 @@ const Comments = ({
     <Container>
       <Row className='comments__row'>
         <Col className='card-form__icon-column'>
-          <span>ic</span>
+          <span className='card-form__icon-span'>
+            <FaRegCommentDots className='full-card-icon' />
+          </span>
         </Col>
         <Col>
           <Row>

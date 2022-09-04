@@ -3,6 +3,7 @@ import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import './style.css';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
+import { FaRegWindowMaximize, FaAlignLeft } from 'react-icons/fa';
 
 const FullCard = ({
   card,
@@ -51,7 +52,9 @@ const FullCard = ({
         </Row>
         <Row className='full-card__section'>
           <Col className='card-form__icon-column'>
-            <span>ic</span>
+            <span className='card-form__icon-span'>
+              <FaRegWindowMaximize className='full-card-icon' />
+            </span>
           </Col>
           <Col>
             <Row>
@@ -67,14 +70,16 @@ const FullCard = ({
                 }}
                 required
                 disabled={isEditingMode ? false : true}
-                className='textarea-autosize'
+                className='textarea-autosize card-form__title-textarea'
               />
             </Row>
           </Col>
         </Row>
         <Row className='full-card__section'>
           <Col className='card-form__icon-column'>
-            <span>ic</span>
+            <span className='card-form__icon-span'>
+              <FaAlignLeft className='full-card-icon' />
+            </span>
           </Col>
           <Col>
             <Row>
