@@ -122,6 +122,8 @@ const FullCard = ({
                   variant='secondary'
                   className='textarea-autosize-btn'
                   onClick={() => {
+                    setTitleValue(card.title);
+                    setTextValue(card.text);
                     setIsEditingMode(false);
                   }}
                 >
