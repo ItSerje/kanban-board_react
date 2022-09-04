@@ -1,4 +1,6 @@
-.modal-content > .modal-body {
-  margin-left: 20px;
-  margin-right: 20px;
+@media (min-width: 768px) {
+  .modal-content > .modal-body {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
