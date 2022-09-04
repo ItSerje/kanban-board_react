@@ -16,7 +16,8 @@ const Navbar = ({ logout }) => {
             <BootstrapNavbar.Text className='d-none d-sm-inline'>
               Signed in as:{' '}
             </BootstrapNavbar.Text>
-            <span className='current-user-name'>{currentUser}</span> |{' '}
+            <span className='current-user-name'>{currentUser}</span>
+            {' | '}
             <span className='logout' onClick={logout}>
               Sign out
             </span>
