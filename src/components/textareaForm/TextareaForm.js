@@ -10,6 +10,7 @@ const TextareaForm = ({
   submitCallback = null,
   isEditingMode = true,
 }) => {
+  const initialInputValue = text;
   const [inputValue, setInputValue] = useState(text);
 
   return (
@@ -43,7 +44,10 @@ const TextareaForm = ({
           <Button
             variant='secondary'
             className='textarea-autosize-btn'
-            onClick={cancelCallback}
+            onClick={() => {
+              setInputValue(initialInputValue);
+              cancelCallback();
+            }}
           >
             Cancel
           </Button>
