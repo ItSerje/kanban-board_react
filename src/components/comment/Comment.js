@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import TextareaForm from '../textareaForm/TextareaForm';
 import useOutsideClick from '../../hooks/useOutsideClick';
+import { useAppContext } from '../../context/app-context';
 
 const Comment = ({
   comment,
@@ -10,6 +11,9 @@ const Comment = ({
   deleteCommentHandler,
 }) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
+  const { currentUser } = useAppContext();
+  const isAuthor = currentUser === comment.author ? true : false;
+
   const handleCommentUpdate = (inputValue) => {
     updateCommentHandler(comment.id, inputValue);
   };
@@ -33,7 +37,7 @@ const Comment = ({
           isEditingMode={isEditingMode}
         />
       </Row>
-      {!isEditingMode && (
+      {!isEditingMode && isAuthor && (
         <Row>
           <Col>
             <span
