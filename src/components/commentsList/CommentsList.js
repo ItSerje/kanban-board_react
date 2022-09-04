@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import TextareaForm from '../textareaForm/TextareaForm';
 import Comment from '../comment/Comment';
 import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
+import useOutsideClick from '../../hooks/useOutsideClick';
 
 const Comments = ({
   comments,
@@ -10,6 +11,12 @@ const Comments = ({
   deleteCommentHandler,
 }) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
+
+  const handleClickOutside = () => {
+    setIsEditingMode(false);
+  };
+
+  const ref = useOutsideClick(handleClickOutside);
 
   return (
     <Container>
@@ -55,7 +62,7 @@ const Comments = ({
           </Col>
         )}
         {isEditingMode && (
-          <Col>
+          <Col ref={ref}>
             <TextareaForm
               text=''
               placeholder='Write a comment'
