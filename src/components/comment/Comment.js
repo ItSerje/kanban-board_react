@@ -44,15 +44,16 @@ const Comment = ({
               onClick={() => {
                 setIsEditingMode(true);
               }}
+              style={{ cursor: 'pointer' }}
             >
               Edit
             </span>
-          </Col>
-          <Col>
+            {' | '}
             <span
               onClick={() => {
                 deleteCommentHandler(comment.id);
               }}
+              style={{ cursor: 'pointer' }}
             >
               Delete
             </span>
