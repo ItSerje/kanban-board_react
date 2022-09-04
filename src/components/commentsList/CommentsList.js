@@ -4,6 +4,7 @@ import Comment from '../comment/Comment';
 import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { useAppContext } from '../../context/app-context';
+import './style.css';
 
 const Comments = ({
   comments,
@@ -37,7 +38,9 @@ const Comments = ({
         return (
           <Row key={comment.id}>
             <Col className='card-form__icon-column'>
-              <span>ic</span>
+              <span className='comment-author-icon'>
+                {comment.author.charAt(0).toUpperCase()}
+              </span>
             </Col>
             <Col>
               <Row>

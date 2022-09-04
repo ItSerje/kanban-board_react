@@ -1,0 +1,19 @@
+.comment-author-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: darkblue;
+  border-radius: 50%;
+}
+
+.card-form__icon-column {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
