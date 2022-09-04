@@ -3,6 +3,7 @@ import TextareaForm from '../textareaForm/TextareaForm';
 import Comment from '../comment/Comment';
 import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import useOutsideClick from '../../hooks/useOutsideClick';
+import { useAppContext } from '../../context/app-context';
 
 const Comments = ({
   comments,
@@ -11,6 +12,8 @@ const Comments = ({
   deleteCommentHandler,
 }) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
+
+  const { currentUser } = useAppContext();
 
   const handleClickOutside = () => {
     setIsEditingMode(false);
@@ -42,6 +45,7 @@ const Comments = ({
                   Author:{' '}
                   <span className='full-card__card-author'>
                     {comment.author}
+                    {currentUser === comment.author ? ' (You)' : ''}
                   </span>
                 </span>
               </Row>
