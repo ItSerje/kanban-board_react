@@ -37,12 +37,22 @@ const Comments = ({
               <span>ic</span>
             </Col>
             <Col>
-              <Comment
-                comment={comment}
-                addCommentHandler={addCommentHandler}
-                updateCommentHandler={updateCommentHandler}
-                deleteCommentHandler={deleteCommentHandler}
-              />
+              <Row>
+                <span>
+                  Author:{' '}
+                  <span className='full-card__card-author'>
+                    {comment.author}
+                  </span>
+                </span>
+              </Row>
+              <Row>
+                <Comment
+                  comment={comment}
+                  addCommentHandler={addCommentHandler}
+                  updateCommentHandler={updateCommentHandler}
+                  deleteCommentHandler={deleteCommentHandler}
+                />
+              </Row>
             </Col>
           </Row>
         );
