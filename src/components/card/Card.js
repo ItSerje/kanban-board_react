@@ -4,7 +4,7 @@ import Modal from '../modal/Modal';
 import FullCardContainer from '../fullCard/FullCardContainer';
 
 import './style.css';
-import { FaRegEdit } from 'react-icons/fa';
+import { FaRegEdit, FaRegComment } from 'react-icons/fa';
 import { useAppContext } from '../../context/app-context';
 
 const Card = ({ card, columnName }) => {
@@ -37,14 +37,16 @@ const Card = ({ card, columnName }) => {
         onMouseEnter={() => setIsIconShown(true)}
         onMouseLeave={() => setIsIconShown(false)}
       >
-        <FaRegEdit className={isIconShown ? 'edit-icon' : 'edit-icon hidden'} />
+        <FaRegEdit className={isIconShown ? 'icon-edit' : 'icon-edit hidden'} />
         <BootstrapCard.Body className='card-list-card-body'>
           <BootstrapCard.Title as='div'>{title}</BootstrapCard.Title>
         </BootstrapCard.Body>
         <BootstrapCard.Footer>
-          <div className='card-badge' title='Comments'>
-            <span className='card-badge-icon'></span>
-            <span className='card-badge-text'>{comments.length}</span>
+          <div className='card-badge'>
+            <FaRegComment className='icon-comment' title='Comments' />
+            <span className='card-badge-text' title='Comments'>
+              {comments.length}
+            </span>
           </div>
         </BootstrapCard.Footer>
       </BootstrapCard>

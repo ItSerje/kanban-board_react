@@ -27,7 +27,7 @@
   text-decoration: none;
 }
 
-.edit-icon {
+.icon-edit {
   width: 30px;
   height: 30px;
   padding: 4px 4px 6px 6px;
@@ -39,7 +39,7 @@
   border-radius: 3px;
   opacity: 0.8;
 }
-.edit-icon.hidden {
+.icon-edit.hidden {
   opacity: 0;
   pointer-events: none;
 }
@@ -49,6 +49,15 @@
   background: none;
 }
 
-.card-badge-icon::before {
-  content: '🧾';
+.card-badge {
+  display: flex;
+  align-items: center;
+}
+
+.card-badge-text {
+  margin-left: 5px;
+}
+
+.icon-comment {
+  color: var(--ds-text);
 }
