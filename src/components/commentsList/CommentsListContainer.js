@@ -16,7 +16,9 @@ const CommentsContainer = ({
     refreshCard();
   };
   const updateCommentHandler = async (commentId, text) => {
+    activateCardSpinner();
     await updateComment(cardId, commentId, text);
+    refreshCard();
   };
   const deleteCommentHandler = async (commentId) => {
     activateCardSpinner();
