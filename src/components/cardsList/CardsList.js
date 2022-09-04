@@ -17,6 +17,12 @@ const CardsList = ({
   const [isAddCardMode, setIsAddCardMode] = useState(false);
   const [columnName, setColumnName] = useState(name);
 
+  const handleColumnNameUpdate = () => {
+    setColumnName(columnName.trim());
+    updateColumnNameHandler(columnName);
+    setNameEditMode(false);
+  };
+
   return (
     <BootstrapCard bsPrefix='cards-list'>
       <BootstrapCard.Header
@@ -26,7 +32,7 @@ const CardsList = ({
         }}
       >
         {!isNameEditMode ? (
-          <div className='cards-list__column-name'>{name}</div>
+          <div className='cards-list__column-name'>{columnName}</div>
         ) : (
           <BootstrapForm>
             <BootstrapForm.Group controlId='exampleForm.ControlTextarea1'>
@@ -46,13 +52,11 @@ const CardsList = ({
                 }}
                 onKeyDown={(e) => {
                   if (['Enter', 'NumpadEnter', 'Escape'].includes(e.key)) {
-                    updateColumnNameHandler(columnName);
-                    setNameEditMode(false);
+                    handleColumnNameUpdate();
                   }
                 }}
                 onBlur={() => {
-                  updateColumnNameHandler(columnName);
-                  setNameEditMode(false);
+                  handleColumnNameUpdate();
                 }}
               />
             </BootstrapForm.Group>

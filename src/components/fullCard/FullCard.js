@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
-import { useAppContext } from '../../context/app-context';
 import { Form } from 'react-bootstrap';
 import './style.css';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
@@ -19,8 +18,15 @@ const FullCard = ({
   const submitHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const newCard = { ...card, title: titleValue, text: textValue };
-    await updateCardHandler(newCard);
+    setTitleValue(titleValue.trim());
+    setTextValue(textValue.trim());
+    const updatedCard = {
+      ...card,
+      title: titleValue.trim(),
+      text: textValue.trim(),
+    };
+    await updateCardHandler(updatedCard);
+    setIsLoading(false);
   };
 
   useEffect(

@@ -33,7 +33,8 @@ const TextareaForm = ({
             variant='primary'
             className='textarea-autosize-btn'
             onClick={() => {
-              submitCallback(inputValue);
+              setInputValue(inputValue.trim());
+              submitCallback(inputValue.trim());
               cancelCallback();
             }}
           >
