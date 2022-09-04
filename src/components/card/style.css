@@ -37,7 +37,8 @@
   right: 3px;
   top: 3px;
   border-radius: 3px;
-  opacity: 0.8;
+  opacity: 0.85;
+  z-index: 1;
 }
 .icon-edit.hidden {
   opacity: 0;
