@@ -3,6 +3,7 @@ import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import TextareaForm from '../textareaForm/TextareaForm';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { useAppContext } from '../../context/app-context';
+import './style.css';
 
 const Comment = ({
   comment,
@@ -26,7 +27,7 @@ const Comment = ({
 
   return (
     <>
-      <Row ref={ref}>
+      <Row ref={ref} className='comments__textarea'>
         <TextareaForm
           text={comment.comment}
           placeholder='Enter a comment'
@@ -44,16 +45,18 @@ const Comment = ({
               onClick={() => {
                 setIsEditingMode(true);
               }}
-              style={{ cursor: 'pointer' }}
+              className='comments__comment-control'
+              title='Edit comment'
             >
               Edit
             </span>
-            {' | '}
+            {'  |  '}
             <span
               onClick={() => {
                 deleteCommentHandler(comment.id);
               }}
-              style={{ cursor: 'pointer' }}
+              className='comments__comment-control comments__comment-control-del'
+              title='Delete comment'
             >
               Delete
             </span>

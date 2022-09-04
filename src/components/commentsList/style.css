@@ -17,3 +17,18 @@
   padding-right: 0;
   text-align: center;
 }
+
+.comments__row {
+  margin-bottom: 25px;
+}
+
+.comments-list__add-comment-col {
+  margin: 0;
+  padding: 0;
+}
+
+.comments-list__add-comment-col .textarea-autosize {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}

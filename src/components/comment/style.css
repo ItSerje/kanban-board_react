@@ -1,0 +1,23 @@
+.comments__comment-control {
+  font-style: italic;
+  cursor: pointer;
+}
+
+.comments__comment-control:hover {
+  color: #198754;
+}
+
+.comments__comment-control-del:hover {
+  color: red;
+}
+
+.comments__textarea {
+  margin: 0;
+  padding: 0;
+}
+
+.comments__textarea .textarea-autosize {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 0;
+}

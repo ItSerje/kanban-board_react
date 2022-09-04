@@ -24,7 +24,7 @@ const Comments = ({
 
   return (
     <Container>
-      <Row>
+      <Row className='comments__row'>
         <Col className='card-form__icon-column'>
           <span>ic</span>
         </Col>
@@ -36,7 +36,7 @@ const Comments = ({
       </Row>
       {comments.map((comment) => {
         return (
-          <Row key={comment.id}>
+          <Row key={comment.id} className='comments__row'>
             <Col className='card-form__icon-column'>
               <span className='comment-author-icon'>
                 {comment.author.charAt(0).toUpperCase()}
@@ -65,7 +65,7 @@ const Comments = ({
         );
       })}
 
-      <Row>
+      <Row className='comments__row'>
         <Col className='card-form__icon-column'></Col>
         {!isEditingMode && (
           <Col>
@@ -79,7 +79,7 @@ const Comments = ({
           </Col>
         )}
         {isEditingMode && (
-          <Col ref={ref}>
+          <Col ref={ref} className='comments-list__add-comment-col'>
             <TextareaForm
               text=''
               placeholder='Write a comment'
