@@ -8,7 +8,7 @@ import { useAppContext } from '../../context/app-context';
 
 const Card = ({ card, columnName }) => {
   const { id, comments, title } = card;
-
+  const [isIconShown, setIsIconShown] = useState(false);
   const [isModalShown, setIsModalShown] = useState(false);
   const { refreshDashboard } = useAppContext();
   const closeModal = () => {
@@ -31,9 +31,15 @@ const Card = ({ card, columnName }) => {
           />
         </Modal>
       )}
-      <BootstrapCard onClick={() => setIsModalShown(true)}>
+      <BootstrapCard
+        onClick={() => setIsModalShown(true)}
+        onMouseEnter={() => setIsIconShown(true)}
+        onMouseLeave={() => setIsIconShown(false)}
+      >
         {/* <Card.Img variant='top' src='holder.js/100px180' /> */}
-        <span className='card-edit-icon'></span>
+        <span
+          className={isIconShown ? 'card-edit-icon' : 'card-edit-icon hidden'}
+        ></span>
         <BootstrapCard.Body className='card-list-card-body'>
           <BootstrapCard.Title as='div'>{title}</BootstrapCard.Title>
           {/* <BootstrapCard.Text>{author}</BootstrapCard.Text> */}

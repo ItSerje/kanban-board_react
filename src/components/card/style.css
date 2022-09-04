@@ -16,14 +16,12 @@
   min-height: 20px;
   position: relative;
   text-decoration: none;
-  z-index: 0;
 }
 
 .card-list-card-body {
   overflow: hidden;
   padding: 6px 8px 2px;
   position: relative;
-  z-index: 10;
 }
 
 .card-title {
@@ -47,7 +45,13 @@
   right: 2px;
   top: 2px;
   visibility: visible;
-  z-index: 40;
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+.card-edit-icon.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .card-edit-icon::before {
