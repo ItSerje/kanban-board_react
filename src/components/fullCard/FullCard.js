@@ -37,7 +37,7 @@ const FullCard = ({
   return (
     <Container>
       <Form onSubmit={submitHandler}>
-        <Row className='full-card__section'>
+        <Row className='full-card__section full-card__list-author-row'>
           <Col>
             <p>
               in list <a href='#'>{columnName}</a>
