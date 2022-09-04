@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
 import TextareaForm from '../textareaForm/TextareaForm';
+import useOutsideClick from '../../hooks/useOutsideClick';
 
 const Comment = ({
   comment,
@@ -13,9 +14,15 @@ const Comment = ({
     updateCommentHandler(comment.id, inputValue);
   };
 
+  const handleClickOutside = () => {
+    setIsEditingMode(false);
+  };
+
+  const ref = useOutsideClick(handleClickOutside);
+
   return (
     <>
-      <Row>
+      <Row ref={ref}>
         <TextareaForm
           text={comment.comment}
           placeholder='Enter a comment'
