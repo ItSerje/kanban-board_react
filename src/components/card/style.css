@@ -34,28 +34,21 @@
   text-decoration: none;
 }
 
-.card-edit-icon {
-  background-clip: padding-box;
-  background-color: #f4f5f7;
-  background-origin: initial;
+.edit-icon {
+  width: 30px;
+  height: 30px;
+  padding: 4px 4px 6px 6px;
+  background-color: #ebecf0;
+  color: var(--ds-text);
+  position: absolute;
+  right: 3px;
+  top: 3px;
   border-radius: 3px;
   opacity: 0.8;
-  padding: 4px;
-  position: absolute;
-  right: 2px;
-  top: 2px;
-  visibility: visible;
-  transition: opacity 0.5s;
-  opacity: 1;
 }
-
-.card-edit-icon.hidden {
+.edit-icon.hidden {
   opacity: 0;
   pointer-events: none;
-}
-
-.card-edit-icon::before {
-  content: '✍🏻';
 }
 
 .card-footer {
