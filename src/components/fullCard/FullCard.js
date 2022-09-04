@@ -11,20 +11,17 @@ const FullCard = ({
   deleteCardHandler,
 }) => {
   const [isEditingMode, setIsEditingMode] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [titleValue, setTitleValue] = useState(card.title);
   const [textValue, setTextValue] = useState(card.text);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
     const updatedCard = {
       ...card,
       title: titleValue.trim(),
       text: textValue.trim(),
     };
     await updateCardHandler(updatedCard);
-    setIsLoading(false);
   };
 
   useEffect(
@@ -119,16 +116,7 @@ const FullCard = ({
                   className='textarea-autosize-btn'
                   onClick={submitHandler}
                 >
-                  {!isLoading ? (
-                    'Save'
-                  ) : (
-                    <Spinner
-                      animation='border'
-                      variant='success'
-                      className='spinner'
-                      size='sm'
-                    />
-                  )}
+                  Save
                 </Button>
                 <Button
                   variant='secondary'

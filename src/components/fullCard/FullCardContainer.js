@@ -14,11 +14,13 @@ const FullCardContainer = ({ cardId, columnName, closeModal }) => {
   };
 
   const updateCardHandler = async (card) => {
+    setIsLoading(true);
     await updateCard(card);
     refreshCard();
   };
 
   const deleteCardHandler = async (id) => {
+    setIsLoading(true);
     await deleteCard(id);
     closeModal();
   };
@@ -49,6 +51,7 @@ const FullCardContainer = ({ cardId, columnName, closeModal }) => {
         comments={card.comments}
         cardId={cardId}
         refreshCard={refreshCard}
+        activateCardSpinner={() => setIsLoading(true)}
       />
     </>
   );
