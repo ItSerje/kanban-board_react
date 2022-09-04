@@ -8,7 +8,6 @@ const CardsListContainer = ({ cards, name, columnId }) => {
 
   const updateColumnNameHandler = async (newName) => {
     await updateColumnName(columnId, newName);
-    refreshDashboard();
   };
 
   const createCardHandler = async (title) => {

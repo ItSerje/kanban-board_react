@@ -4,12 +4,17 @@ import Modal from '../modal/Modal';
 import FullCardContainer from '../fullCard/FullCardContainer';
 
 import './style.css';
+import { useAppContext } from '../../context/app-context';
 
 const Card = ({ card, columnName }) => {
   const { id, comments, title } = card;
 
   const [isModalShown, setIsModalShown] = useState(false);
-  const closeModal = () => setIsModalShown(false);
+  const { refreshDashboard } = useAppContext();
+  const closeModal = () => {
+    setIsModalShown(false);
+    refreshDashboard();
+  };
 
   return (
     <>
