@@ -22,7 +22,11 @@ const DashboardContainer = () => {
   }, [refreshDashboardTrigger]);
 
   if (isLoading) {
-    return <Spinner animation='border' variant='primary' className='spinner' />;
+    return (
+      <div className='spinner-container'>
+        <Spinner animation='border' variant='primary' className='spinner' />
+      </div>
+    );
   }
 
   return <Dashboard dashboard={dashboard} />;

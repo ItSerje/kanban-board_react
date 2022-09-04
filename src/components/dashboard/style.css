@@ -8,3 +8,11 @@
   white-space: nowrap;
   /* overflow-y: auto; */
 }
+
+.spinner-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
