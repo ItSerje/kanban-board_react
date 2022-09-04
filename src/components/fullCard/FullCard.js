@@ -18,8 +18,6 @@ const FullCard = ({
   const submitHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setTitleValue(titleValue.trim());
-    setTextValue(textValue.trim());
     const updatedCard = {
       ...card,
       title: titleValue.trim(),
@@ -119,6 +117,7 @@ const FullCard = ({
                   type='submit'
                   variant='success'
                   className='textarea-autosize-btn'
+                  onClick={submitHandler}
                 >
                   {!isLoading ? (
                     'Save'
@@ -134,7 +133,9 @@ const FullCard = ({
                 <Button
                   variant='secondary'
                   className='textarea-autosize-btn'
-                  onClick={() => setIsEditingMode(false)}
+                  onClick={() => {
+                    setIsEditingMode(false);
+                  }}
                 >
                   Cancel
                 </Button>

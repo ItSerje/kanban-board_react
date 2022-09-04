@@ -15,6 +15,7 @@ const FullCardContainer = ({ cardId, columnName, closeModal }) => {
 
   const updateCardHandler = async (card) => {
     await updateCard(card);
+    refreshCard();
   };
 
   const deleteCardHandler = async (id) => {
