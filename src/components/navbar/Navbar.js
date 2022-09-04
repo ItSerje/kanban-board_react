@@ -7,23 +7,23 @@ import './style.css';
 const Navbar = ({ logout }) => {
   const { currentUser } = useAppContext();
   return (
-    <BootstrapNavbar>
-      <BootstrapContainer>
-        <BootstrapNavbar.Brand href='#home'>Kanban Board</BootstrapNavbar.Brand>
-        <BootstrapNavbar.Toggle />
-        <BootstrapNavbar.Collapse className='justify-content-end'>
-          <BootstrapNavbar.Text>
-            <BootstrapNavbar.Text className='d-none d-sm-inline'>
-              Signed in as:{' '}
-            </BootstrapNavbar.Text>
-            <span className='current-user-name'>{currentUser}</span>
-            {' | '}
-            <span className='logout' onClick={logout}>
-              Sign out
-            </span>
+    <BootstrapNavbar className='navbar'>
+      <BootstrapNavbar.Brand href='#home' className='navbar-brand'>
+        Kanban Board
+      </BootstrapNavbar.Brand>
+      <BootstrapNavbar.Toggle />
+      <BootstrapNavbar.Collapse className='justify-content-end'>
+        <BootstrapNavbar.Text>
+          <BootstrapNavbar.Text className='d-none d-sm-inline'>
+            Signed in as:{' '}
           </BootstrapNavbar.Text>
-        </BootstrapNavbar.Collapse>
-      </BootstrapContainer>
+          <span className='current-user-name'>{currentUser}</span>
+          {' | '}
+          <span className='logout' onClick={logout}>
+            Sign out
+          </span>
+        </BootstrapNavbar.Text>
+      </BootstrapNavbar.Collapse>
     </BootstrapNavbar>
   );
 };
