@@ -41,14 +41,16 @@ const Card = ({ card, columnName }) => {
         <BootstrapCard.Body className='card-list-card-body'>
           <BootstrapCard.Title as='div'>{title}</BootstrapCard.Title>
         </BootstrapCard.Body>
-        <BootstrapCard.Footer>
-          <div className='card-badge'>
-            <FaRegComment className='icon-comment' title='Comments' />
-            <span className='card-badge-text' title='Comments'>
-              {comments.length}
-            </span>
-          </div>
-        </BootstrapCard.Footer>
+        {comments.length > 0 && (
+          <BootstrapCard.Footer>
+            <div className='card-badge'>
+              <FaRegComment className='icon-comment' title='Comments' />
+              <span className='card-badge-text' title='Comments'>
+                {comments.length}
+              </span>
+            </div>
+          </BootstrapCard.Footer>
+        )}
       </BootstrapCard>
     </>
   );
