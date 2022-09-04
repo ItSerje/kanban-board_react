@@ -7,11 +7,14 @@ import Spinner from 'react-bootstrap/Spinner';
 const FullCardContainer = ({ cardId, columnName, closeModal }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [card, setCard] = useState(null);
-  const [refreshCard, setRefreshCard] = useState(0);
+  const [refreshingCounter, setRefreshingCounter] = useState(0);
+
+  const refreshCard = () => {
+    setRefreshingCounter(refreshingCounter + 1);
+  };
 
   const updateCardHandler = async (card) => {
     await updateCard(card);
-    setRefreshCard(refreshCard + 1);
   };
 
   const deleteCardHandler = async (id) => {
@@ -27,7 +30,7 @@ const FullCardContainer = ({ cardId, columnName, closeModal }) => {
       setIsLoading(false);
     };
     fetchData();
-  }, [cardId]);
+  }, [cardId, refreshingCounter]);
 
   if (isLoading) {
     return <Spinner animation='border' variant='primary' className='spinner' />;
@@ -41,7 +44,11 @@ const FullCardContainer = ({ cardId, columnName, closeModal }) => {
         updateCardHandler={updateCardHandler}
         deleteCardHandler={deleteCardHandler}
       ></FullCard>
-      <CommentsListContainer comments={card.comments} cardId={cardId} />
+      <CommentsListContainer
+        comments={card.comments}
+        cardId={cardId}
+        refreshCard={refreshCard}
+      />
     </>
   );
 };

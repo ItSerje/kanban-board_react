@@ -2,17 +2,19 @@ import Comments from './CommentsList';
 import { createComment, updateComment, deleteComment } from '../../api';
 import { useAppContext } from '../../context/app-context';
 
-const CommentsContainer = ({ comments, cardId }) => {
+const CommentsContainer = ({ comments, cardId, refreshCard }) => {
   const { currentUser } = useAppContext();
 
-  const addCommentHandler = (text) => {
-    createComment(cardId, text, currentUser);
+  const addCommentHandler = async (text) => {
+    await createComment(cardId, text, currentUser);
+    refreshCard();
   };
-  const updateCommentHandler = (commentId, text) => {
-    updateComment(cardId, commentId, text);
+  const updateCommentHandler = async (commentId, text) => {
+    await updateComment(cardId, commentId, text);
   };
-  const deleteCommentHandler = (commentId) => {
-    deleteComment(cardId, commentId);
+  const deleteCommentHandler = async (commentId) => {
+    await deleteComment(cardId, commentId);
+    refreshCard();
   };
   return (
     <Comments
