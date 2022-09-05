@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Button, Form } from 'react-bootstrap';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
-import { FaRegWindowMaximize, FaAlignLeft } from 'react-icons/fa';
+import {
+  FaRegWindowMaximize,
+  FaAlignLeft,
+  FaRegTrashAlt,
+} from 'react-icons/fa';
 import { Icard } from '../../models/dashboard.model';
 import './style.css';
 
@@ -126,7 +130,7 @@ const FullCard: React.FC<IFullCardProps> = ({
               <Col className='full-card-form__save-cancel-btns-container'>
                 <Button
                   type='submit'
-                  variant='success'
+                  variant='primary'
                   className='textarea-autosize-btn'
                   //   onClick={submitHandler}
                 >
@@ -145,13 +149,12 @@ const FullCard: React.FC<IFullCardProps> = ({
                 </Button>
               </Col>
               <Col className='full-card-form__delete-btn-container'>
-                <button
-                  type='button'
+                <span
                   className='card-form__delete-btn'
                   onClick={() => deleteCardHandler(card.id)}
                 >
-                  🗑️
-                </button>
+                  <FaRegTrashAlt className='full-card-form__delete-icon' />
+                </span>
               </Col>
             </Row>
           )}

@@ -7,13 +7,6 @@
   max-width: 30px;
 }
 
-.card-form__delete-btn {
-  width: fit-content;
-  border: none;
-  background-color: #fff;
-  height: 100%;
-}
-
 .full-card__section {
   margin-bottom: 20px;
 }
@@ -74,8 +67,8 @@
 
 .card-form__icon-span {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: right;
+  vertical-align: middle;
   padding-top: 0px;
 }
 
@@ -84,4 +77,26 @@
   height: 22px;
   color: var(--ds-text);
   opacity: 0.85;
+}
+
+.card-form__delete-btn {
+  height: 100%;
+}
+
+.full-card-form__delete-btn-container > .card-form__delete-btn {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-top: 0px;
+}
+
+.full-card-form__delete-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--ds-text);
+  opacity: 0.85;
+}
+
+.full-card-form__delete-icon:hover {
+  color: red;
 }
