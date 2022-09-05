@@ -2,19 +2,24 @@ import { useState } from 'react';
 import BootstrapCard from 'react-bootstrap/Card';
 import Modal from '../modal/Modal';
 import FullCardContainer from '../fullCard/FullCardContainer';
-
 import './style.css';
 import { FaRegEdit, FaRegComment } from 'react-icons/fa';
 import { useAppContext } from '../../context/app-context';
+import { Icard } from '../../models/dashboard.model';
 
-const Card = ({ card, columnName }) => {
+interface ICardProps {
+  card: Icard;
+  columnName: string;
+}
+
+const Card: React.FC<ICardProps> = ({ card, columnName }): JSX.Element => {
   const { id, comments, title } = card;
-  const [isIconShown, setIsIconShown] = useState(false);
-  const [isModalShown, setIsModalShown] = useState(false);
+  const [isIconShown, setIsIconShown] = useState<boolean>(false);
+  const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const { refreshDashboard } = useAppContext();
-  const closeModal = () => {
+  const closeModal: () => void = () => {
     setIsModalShown(false);
-    refreshDashboard();
+    refreshDashboard?.();
   };
 
   return (

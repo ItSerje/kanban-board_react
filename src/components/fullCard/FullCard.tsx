@@ -1,23 +1,32 @@
-import { useState, useEffect, useRef } from 'react';
-import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
-import './style.css';
+import React, { useState, useEffect } from 'react';
+import { Container, Col, Row, Button, Form } from 'react-bootstrap';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
 import { FaRegWindowMaximize, FaAlignLeft } from 'react-icons/fa';
+import { Icard } from '../../models/dashboard.model';
+import './style.css';
 
-const FullCard = ({
+interface IFullCardProps {
+  card: Icard;
+  columnName: string;
+  updateCardHandler: (card: Icard) => Promise<void>;
+  deleteCardHandler: (id: string) => Promise<void>;
+}
+
+const FullCard: React.FC<IFullCardProps> = ({
   card,
   columnName,
   updateCardHandler,
   deleteCardHandler,
-}) => {
-  const [isEditingMode, setIsEditingMode] = useState(false);
-  const [titleValue, setTitleValue] = useState(card.title);
-  const [textValue, setTextValue] = useState(card.text);
+}): JSX.Element => {
+  const [isEditingMode, setIsEditingMode] = useState<boolean>(false);
+  const [titleValue, setTitleValue] = useState<string>(card.title);
+  const [textValue, setTextValue] = useState<string>(card.text);
 
-  const submitHandler = async (e) => {
+  const submitHandler: (
+    e: React.FormEvent<HTMLFormElement>
+  ) => Promise<void> = async (e) => {
     e.preventDefault();
-    const updatedCard = {
+    const updatedCard: Icard = {
       ...card,
       title: titleValue.trim(),
       text: textValue.trim(),
@@ -27,10 +36,9 @@ const FullCard = ({
 
   useEffect(
     () =>
-      document.querySelectorAll('.textarea-autosize').forEach((el) => {
-        console.log(el);
-        autoResizeTextarea(el);
-      }),
+      document
+        .querySelectorAll('.textarea-autosize')
+        .forEach((el: Element | HTMLTextAreaElement) => autoResizeTextarea(el)),
     [titleValue, textValue, isEditingMode]
   );
 
@@ -40,6 +48,7 @@ const FullCard = ({
         <Row className='full-card__section full-card__list-author-row'>
           <Col>
             <p>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               in list <a href='#'>{columnName}</a>
             </p>
           </Col>
@@ -119,7 +128,7 @@ const FullCard = ({
                   type='submit'
                   variant='success'
                   className='textarea-autosize-btn'
-                  onClick={submitHandler}
+                  //   onClick={submitHandler}
                 >
                   Save
                 </Button>

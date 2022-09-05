@@ -1,23 +1,30 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BootstrapCard from 'react-bootstrap/Card';
 import BootstrapForm from 'react-bootstrap/Form';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
 import TextareaForm from '../textareaForm/TextareaForm';
-
+import { Icard } from '../../models/dashboard.model';
 import Card from '../card/Card';
 import './style.css';
 
-const CardsList = ({
+interface ICardsListProps {
+  cards: Icard[];
+  name: string;
+  updateColumnNameHandler: (newName: string) => void;
+  createCardHandler: (title: string) => void;
+}
+
+const CardsList: React.FC<ICardsListProps> = ({
   cards,
   name,
   updateColumnNameHandler,
   createCardHandler,
-}) => {
-  const [isNameEditMode, setNameEditMode] = useState(false);
-  const [isAddCardMode, setIsAddCardMode] = useState(false);
-  const [columnName, setColumnName] = useState(name);
+}): JSX.Element => {
+  const [isNameEditMode, setNameEditMode] = useState<boolean>(false);
+  const [isAddCardMode, setIsAddCardMode] = useState<boolean>(false);
+  const [columnName, setColumnName] = useState<string>(name);
 
-  const handleColumnNameUpdate = () => {
+  const handleColumnNameUpdate: () => void = () => {
     setColumnName(columnName.trim());
     updateColumnNameHandler(columnName);
     setNameEditMode(false);

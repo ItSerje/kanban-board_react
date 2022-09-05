@@ -1,17 +1,25 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Col, Row } from 'react-bootstrap';
 import './style.css';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
 
-const TextareaForm = ({
+interface ITextareaFormProps {
+  text?: string;
+  placeholder: string;
+  cancelCallback: () => void;
+  submitCallback: (inputValue: string) => void;
+  isEditingMode?: boolean;
+}
+
+const TextareaForm: React.FC<ITextareaFormProps> = ({
   text = '',
   placeholder = '',
   cancelCallback = null,
   submitCallback = null,
   isEditingMode = true,
-}) => {
-  const initialInputValue = text;
-  const [inputValue, setInputValue] = useState(text);
+}): JSX.Element => {
+  const initialInputValue: string = text;
+  const [inputValue, setInputValue] = useState<string>(text);
 
   return (
     <>
@@ -38,8 +46,8 @@ const TextareaForm = ({
               className='textarea-autosize-btn'
               onClick={() => {
                 setInputValue(inputValue.trim());
-                submitCallback(inputValue.trim());
-                cancelCallback();
+                submitCallback?.(inputValue.trim());
+                cancelCallback?.();
               }}
             >
               Save
@@ -49,7 +57,7 @@ const TextareaForm = ({
               className='textarea-autosize-btn'
               onClick={() => {
                 setInputValue(initialInputValue);
-                cancelCallback();
+                cancelCallback?.();
               }}
             >
               Cancel

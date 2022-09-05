@@ -1,27 +1,37 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import TextareaForm from '../textareaForm/TextareaForm';
 import Comment from '../comment/Comment';
-import { Container, Col, Row, Button, Spinner } from 'react-bootstrap';
-import useOutsideClick from '../../hooks/useOutsideClick';
+import { Container, Col, Row, Button } from 'react-bootstrap';
+import UseOutsideClick from '../../hooks/useOutsideClick';
 import { useAppContext } from '../../context/app-context';
 import { FaRegCommentDots } from 'react-icons/fa';
+import { Icomment } from '../../models/dashboard.model';
 import './style.css';
 
-const Comments = ({
+interface ICommentsProps {
+  comments: Icomment[];
+  addCommentHandler: (text: string) => Promise<void>;
+  updateCommentHandler: (commentId: string, text: string) => Promise<void>;
+  deleteCommentHandler: (commentId: string) => Promise<void>;
+}
+
+const Comments: React.FC<ICommentsProps> = ({
   comments,
   addCommentHandler,
   updateCommentHandler,
   deleteCommentHandler,
-}) => {
-  const [isEditingMode, setIsEditingMode] = useState(false);
+}): JSX.Element => {
+  const [isEditingMode, setIsEditingMode] = useState<boolean>(false);
 
   const { currentUser } = useAppContext();
 
-  const handleClickOutside = () => {
+  const handleClickOutside: () => void = () => {
     setIsEditingMode(false);
   };
 
-  const ref = useOutsideClick(handleClickOutside);
+  const ref = useRef<HTMLDivElement>(null);
+
+  UseOutsideClick(ref, handleClickOutside);
 
   return (
     <Container>
@@ -58,7 +68,6 @@ const Comments = ({
               <Row>
                 <Comment
                   comment={comment}
-                  addCommentHandler={addCommentHandler}
                   updateCommentHandler={updateCommentHandler}
                   deleteCommentHandler={deleteCommentHandler}
                 />

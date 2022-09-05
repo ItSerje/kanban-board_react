@@ -1,4 +1,4 @@
-const generateId = (length) => {
+const generateId = (length: number): string => {
   let result = '';
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

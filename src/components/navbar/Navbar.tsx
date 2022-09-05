@@ -1,11 +1,14 @@
-import { Button } from 'react-bootstrap';
-import BootstrapContainer from 'react-bootstrap/Container';
+import React from 'react';
 import BootstrapNavbar from 'react-bootstrap/Navbar';
 import { useAppContext } from '../../context/app-context';
 import './style.css';
 
-const Navbar = ({ logout }) => {
-  const { currentUser } = useAppContext();
+interface LoginFormProps {
+  logout: () => void;
+}
+
+const Navbar: React.FC<LoginFormProps> = ({ logout }): JSX.Element => {
+  const { currentUser }: { currentUser: string } = useAppContext();
   return (
     <BootstrapNavbar className='navbar'>
       <BootstrapNavbar.Brand href='#home' className='navbar-brand'>

@@ -1,21 +1,25 @@
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './style.css';
-import { useState } from 'react';
 import { useAppContext } from '../../context/app-context';
 
-const LoginForm = ({ closeModal }) => {
-  const [validated, setValidated] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+interface ILoginFormProps {
+  closeModal: () => void;
+}
+
+const LoginForm: React.FC<ILoginFormProps> = ({ closeModal }): JSX.Element => {
+  const [validated, setValidated] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>('');
   const { setCurrentUser } = useAppContext();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      setCurrentUser(inputValue);
+      setCurrentUser?.(inputValue);
       closeModal();
     }
     setValidated(true);

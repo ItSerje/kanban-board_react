@@ -1,18 +1,32 @@
+import React from 'react';
 import CardsList from './CardsList';
 import { updateColumnName, createCard } from '../../api';
 import { useAppContext } from '../../context/app-context';
 import './style.css';
+import { Icard } from '../../models/dashboard.model';
 
-const CardsListContainer = ({ cards, name, columnId }) => {
+interface ICardsListContainerProps {
+  cards: Icard[];
+  name: string;
+  columnId: string;
+}
+
+const CardsListContainer: React.FC<ICardsListContainerProps> = ({
+  cards,
+  name,
+  columnId,
+}): JSX.Element => {
   const { currentUser, refreshDashboard } = useAppContext();
 
-  const updateColumnNameHandler = async (newName) => {
+  const updateColumnNameHandler: (newName: string) => void = async (
+    newName
+  ) => {
     await updateColumnName(columnId, newName);
   };
 
-  const createCardHandler = async (title) => {
+  const createCardHandler: (title: string) => void = async (title) => {
     await createCard(title, columnId, currentUser);
-    refreshDashboard();
+    refreshDashboard?.();
   };
 
   return (

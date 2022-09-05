@@ -1,30 +1,47 @@
+import React from 'react';
 import Comments from './CommentsList';
 import { createComment, updateComment, deleteComment } from '../../api';
 import { useAppContext } from '../../context/app-context';
+import { Icomment } from '../../models/dashboard.model';
 
-const CommentsContainer = ({
+interface ICommentsContainerProps {
+  comments: Icomment[];
+  cardId: string;
+  refreshCard: () => void;
+  activateCardSpinner: () => void;
+}
+
+const CommentsContainer: React.FC<ICommentsContainerProps> = ({
   comments,
   cardId,
   refreshCard,
   activateCardSpinner,
-}) => {
+}): JSX.Element => {
   const { currentUser } = useAppContext();
 
-  const addCommentHandler = async (text) => {
+  const addCommentHandler: (text: string) => Promise<void> = async (text) => {
     activateCardSpinner();
     await createComment(cardId, text, currentUser);
     refreshCard();
   };
-  const updateCommentHandler = async (commentId, text) => {
+
+  const updateCommentHandler: (
+    commentId: string,
+    text: string
+  ) => Promise<void> = async (commentId, text) => {
     activateCardSpinner();
     await updateComment(cardId, commentId, text);
     refreshCard();
   };
-  const deleteCommentHandler = async (commentId) => {
+
+  const deleteCommentHandler: (commentId: string) => Promise<void> = async (
+    commentId
+  ) => {
     activateCardSpinner();
     await deleteComment(cardId, commentId);
     refreshCard();
   };
+
   return (
     <Comments
       comments={comments}

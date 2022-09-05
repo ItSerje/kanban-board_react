@@ -1,21 +1,33 @@
+import React, { useState } from 'react';
 import './style.css';
 import BootstrapModal from 'react-bootstrap/Modal';
 import BootstrapContainer from 'react-bootstrap/Container';
 
-const Modal = ({
+interface ModalProps {
+  children?: JSX.Element | JSX.Element[];
+  showHeader?: boolean;
+  headerTitle?: string;
+  closeModal?: () => void;
+}
+
+const Modal: React.FC<ModalProps> = ({
   children,
   showHeader = false,
   headerTitle = null,
-  closeModal = null,
-}) => {
+  closeModal = () => {},
+}): JSX.Element => {
+  const [isModalShown, setIsModalShown] = useState<boolean>(true);
+
   return (
     <BootstrapModal
-      show={true}
-      //   onHide={keepModalOpen}
+      show={isModalShown}
       size='lg'
       aria-labelledby='contained-modal-title-vcenter'
       centered
-      onHide={closeModal}
+      onHide={() => {
+        setIsModalShown(false);
+        closeModal();
+      }}
     >
       {showHeader && (
         <BootstrapContainer>
