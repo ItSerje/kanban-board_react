@@ -31,7 +31,6 @@ const fetchDashboard = async (): Promise<Icolumn[] | null> => {
     if (!ds) {
       throw new Error();
     }
-    console.log(ds.dashboard.columns);
     return ds.dashboard.columns;
   } catch (error) {
     return null;
