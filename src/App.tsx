@@ -13,7 +13,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <>
       {isModalShown && (
-        <Modal>
+        <Modal isModalShown={isModalShown}>
           <LoginForm closeModal={closeModal} />
         </Modal>
       )}

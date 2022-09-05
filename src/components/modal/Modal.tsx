@@ -8,6 +8,7 @@ interface ModalProps {
   showHeader?: boolean;
   headerTitle?: string;
   closeModal?: () => void;
+  isModalShown: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -15,8 +16,9 @@ const Modal: React.FC<ModalProps> = ({
   showHeader = false,
   headerTitle = null,
   closeModal = () => {},
+  isModalShown = false,
 }): JSX.Element => {
-  const [isModalShown, setIsModalShown] = useState<boolean>(true);
+  //   const [isModalShown, setIsModalShown] = useState<boolean>(true);
 
   return (
     <BootstrapModal
@@ -25,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
       aria-labelledby='contained-modal-title-vcenter'
       centered
       onHide={() => {
-        setIsModalShown(false);
+        // setIsModalShown(false);
         closeModal();
       }}
     >
