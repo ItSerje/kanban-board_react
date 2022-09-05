@@ -3,10 +3,8 @@
   margin: 10px 10px;
   padding-bottom: 10px;
   overflow-y: auto;
-  /* padding-bottom: 8px; */
   user-select: none;
   white-space: nowrap;
-  /* overflow-y: auto; */
 }
 
 .spinner-container {

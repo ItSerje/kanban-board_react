@@ -36,9 +36,9 @@ const Comments: React.FC<ICommentsProps> = ({
   return (
     <Container>
       <Row className='comments__row'>
-        <Col className='card-form__icon-column'>
-          <span className='card-form__icon-span'>
-            <FaRegCommentDots className='full-card-icon' />
+        <Col className='full-card__icon-column'>
+          <span className='full-card__icon-span'>
+            <FaRegCommentDots className='full-card__icon' />
           </span>
         </Col>
         <Col>
@@ -50,8 +50,8 @@ const Comments: React.FC<ICommentsProps> = ({
       {comments.map((comment) => {
         return (
           <Row key={comment.id} className='comments__row'>
-            <Col className='card-form__icon-column'>
-              <span className='comment-author-icon'>
+            <Col className='full-card__icon-column'>
+              <span className='comments__author-icon'>
                 {comment.author.charAt(0).toUpperCase()}
               </span>
             </Col>
@@ -78,7 +78,7 @@ const Comments: React.FC<ICommentsProps> = ({
       })}
 
       <Row className='comments__row'>
-        <Col className='card-form__icon-column'></Col>
+        <Col className='full-card__icon-column'></Col>
         {!isEditingMode && (
           <Col>
             <Button
@@ -91,7 +91,7 @@ const Comments: React.FC<ICommentsProps> = ({
           </Col>
         )}
         {isEditingMode && (
-          <Col ref={ref} className='comments-list__add-comment-col'>
+          <Col ref={ref} className='comments__add-comment-col'>
             <TextareaForm
               text=''
               placeholder='Write a comment'

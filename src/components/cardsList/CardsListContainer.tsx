@@ -30,7 +30,7 @@ const CardsListContainer: React.FC<ICardsListContainerProps> = ({
   };
 
   return (
-    <div className='cards-list-wrapper'>
+    <div className='cards-list__wrapper'>
       <CardsList
         cards={cards}
         name={name}

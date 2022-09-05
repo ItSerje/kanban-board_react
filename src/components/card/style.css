@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 
-.card-list-card-body {
+.card__card-body {
   overflow: hidden;
   padding: 6px 8px 2px;
   position: relative;
@@ -27,7 +27,7 @@
   text-decoration: none;
 }
 
-.icon-edit {
+.card__icon-edit {
   width: 30px;
   height: 30px;
   padding: 4px 4px 6px 6px;
@@ -40,7 +40,7 @@
   opacity: 0.85;
   z-index: 1;
 }
-.icon-edit.hidden {
+.card__icon-edit.hidden {
   opacity: 0;
   pointer-events: none;
 }
@@ -50,15 +50,15 @@
   background: none;
 }
 
-.card-badge {
+.card__badge {
   display: flex;
   align-items: center;
 }
 
-.card-badge-text {
+.card-badge__text {
   margin-left: 5px;
 }
 
-.icon-comment {
+.card__icon-comment {
   color: var(--ds-text);
 }

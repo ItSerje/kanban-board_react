@@ -1,8 +1,17 @@
-.comment-author-icon {
+.comments__row {
+  margin-bottom: 25px;
+}
+
+.full-card__icon-column {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.comments__author-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 24px;
   height: 24px;
   font-size: 12px;
@@ -12,22 +21,12 @@
   border-radius: 50%;
 }
 
-.card-form__icon-column {
-  padding-left: 0;
-  padding-right: 0;
-  text-align: center;
-}
-
-.comments__row {
-  margin-bottom: 25px;
-}
-
-.comments-list__add-comment-col {
+.comments__add-comment-col {
   margin: 0;
   padding: 0;
 }
 
-.comments-list__add-comment-col .textarea-autosize {
+.comments__add-comment-col .textarea-autosize {
   font-size: 16px;
   font-weight: normal;
   margin-bottom: 10px;

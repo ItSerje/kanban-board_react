@@ -42,15 +42,17 @@ const Card: React.FC<ICardProps> = ({ card, columnName }): JSX.Element => {
         onMouseEnter={() => setIsIconShown(true)}
         onMouseLeave={() => setIsIconShown(false)}
       >
-        <FaRegEdit className={isIconShown ? 'icon-edit' : 'icon-edit hidden'} />
-        <BootstrapCard.Body className='card-list-card-body'>
+        <FaRegEdit
+          className={isIconShown ? 'card__icon-edit' : 'card__icon-edit hidden'}
+        />
+        <BootstrapCard.Body className='card__card-body'>
           <BootstrapCard.Title as='div'>{title}</BootstrapCard.Title>
         </BootstrapCard.Body>
         {comments.length > 0 && (
           <BootstrapCard.Footer>
-            <div className='card-badge'>
-              <FaRegComment className='icon-comment' title='Comments' />
-              <span className='card-badge-text' title='Comments'>
+            <div className='card__badge'>
+              <FaRegComment className='card__icon-comment' title='Comments' />
+              <span className='card-badge__text' title='Comments'>
                 {comments.length}
               </span>
             </div>

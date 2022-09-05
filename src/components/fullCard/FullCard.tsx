@@ -56,7 +56,7 @@ const FullCard: React.FC<IFullCardProps> = ({
               in list <a href='#'>{columnName}</a>
             </p>
           </Col>
-          <Col className='card-form__card-author-container'>
+          <Col className='full-card__card-author-container'>
             <span>
               Author:{' '}
               <span className='full-card__card-author'>{card.author}</span>
@@ -64,9 +64,9 @@ const FullCard: React.FC<IFullCardProps> = ({
           </Col>
         </Row>
         <Row className='full-card__section'>
-          <Col className='card-form__icon-column'>
-            <span className='card-form__icon-span'>
-              <FaRegWindowMaximize className='full-card-icon' />
+          <Col className='full-card__icon-column'>
+            <span className='full-card__icon-span'>
+              <FaRegWindowMaximize className='full-card__icon' />
             </span>
           </Col>
           <Col>
@@ -83,15 +83,15 @@ const FullCard: React.FC<IFullCardProps> = ({
                 }}
                 required
                 disabled={isEditingMode ? false : true}
-                className='textarea-autosize card-form__title-textarea'
+                className='textarea-autosize full-card__card-title-textarea'
               />
             </Row>
           </Col>
         </Row>
         <Row className='full-card__section'>
-          <Col className='card-form__icon-column'>
-            <span className='card-form__icon-span'>
-              <FaAlignLeft className='full-card-icon' />
+          <Col className='full-card__icon-column'>
+            <span className='full-card__icon-span'>
+              <FaAlignLeft className='full-card__icon' />
             </span>
           </Col>
           <Col>
@@ -106,14 +106,14 @@ const FullCard: React.FC<IFullCardProps> = ({
                   setTextValue(e.target.value);
                 }}
                 disabled={isEditingMode ? false : true}
-                className='textarea-autosize textarea__text'
+                className='textarea-autosize full-card__card-text-textarea'
               />
             </Row>
           </Col>
         </Row>
 
         <Row className='full-card__section'>
-          <Col className='card-form__icon-column'></Col>
+          <Col className='full-card__icon-column'></Col>
           {!isEditingMode && (
             <Col>
               <Button
@@ -127,7 +127,7 @@ const FullCard: React.FC<IFullCardProps> = ({
           )}
           {isEditingMode && (
             <Row>
-              <Col className='full-card-form__save-cancel-btns-container'>
+              <Col className='full-card__save-cancel-btns-container'>
                 <Button
                   type='submit'
                   variant='primary'
@@ -148,12 +148,12 @@ const FullCard: React.FC<IFullCardProps> = ({
                   Cancel
                 </Button>
               </Col>
-              <Col className='full-card-form__delete-btn-container'>
+              <Col className='full-card__delete-btn-container'>
                 <span
-                  className='card-form__delete-btn'
+                  className='full-card__delete-btn'
                   onClick={() => deleteCardHandler(card.id)}
                 >
-                  <FaRegTrashAlt className='full-card-form__delete-icon' />
+                  <FaRegTrashAlt className='full-card__delete-icon' />
                 </span>
               </Col>
             </Row>

@@ -1,11 +1,4 @@
-/* .cards {
-  border-radius: 3px;
-  margin: 10px;
-  width: 272px;
-  background-color: var(--card-list-background-color);
-} */
-
-.cards-list-wrapper {
+.cards-list__wrapper {
   box-sizing: border-box;
   display: inline-block;
   height: 100%;
@@ -27,10 +20,9 @@
   width: 100% !important;
 }
 
-.cards-list-header {
+.cards-list__header {
   flex: 0 0 auto;
   min-height: 20px;
-  /* height: fit-content; */
   padding: 10px 12px;
   position: relative;
   border: none;
@@ -38,11 +30,15 @@
 
 .cards-list__column-name {
   overflow-wrap: break-word;
-
   height: fit-content;
 }
 
-.cards-list-body {
+.card-list__column-name-input {
+  resize: none;
+  overflow: hidden;
+}
+
+.cards-list__body {
   flex: 1 1 auto;
   margin: 0 4px;
   min-height: 0;
@@ -52,18 +48,7 @@
   z-index: 1;
 }
 
-.cards-list-footer {
-  /* display: flex;
-  justify-content: space-between;
-  margin: 5px 12px;
-  vertical-align: middle;
-
-      flex: 0 0 auto;
-    min-height: 20px;
-    padding: 10px 12px;
-    position: relative;
-    border: none; */
-
+.cards-list__footer {
   flex: 0 0 auto;
   min-height: 20px;
   padding: 10px 12px;
@@ -71,12 +56,7 @@
   border: none;
 }
 
-.card-list__column-name-input {
-  resize: none;
-  overflow: hidden;
-}
-
-.cards-list-body .textarea-autosize {
+.cards-list__body .textarea-autosize {
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -89,6 +69,6 @@
   margin-bottom: 4px;
 }
 
-.cards-list-body .textarea-autosize-btns.row > div.col {
+.cards-list__body .textarea-autosize-btns.row > div.col {
   padding: 0;
 }

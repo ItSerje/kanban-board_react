@@ -33,7 +33,7 @@ const CardsList: React.FC<ICardsListProps> = ({
   return (
     <BootstrapCard bsPrefix='cards-list'>
       <BootstrapCard.Header
-        bsPrefix='cards-list-header'
+        bsPrefix='cards-list__header'
         onClick={() => {
           setNameEditMode(true);
         }}
@@ -70,7 +70,7 @@ const CardsList: React.FC<ICardsListProps> = ({
           </BootstrapForm>
         )}
       </BootstrapCard.Header>
-      <BootstrapCard.Body bsPrefix='cards-list-body'>
+      <BootstrapCard.Body bsPrefix='cards-list__body'>
         {cards.map((card) => (
           <Card card={card} key={card.id} columnName={name} />
         ))}
@@ -82,10 +82,9 @@ const CardsList: React.FC<ICardsListProps> = ({
           />
         )}
       </BootstrapCard.Body>
-      <BootstrapCard.Footer bsPrefix='cards-list-footer'>
+      <BootstrapCard.Footer bsPrefix='cards-list__footer'>
         {!isAddCardMode && (
           <div
-            className='cards-list__add-card'
             onClick={() => {
               setIsAddCardMode(true);
             }}

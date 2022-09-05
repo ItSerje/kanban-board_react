@@ -1,34 +1,73 @@
-.full-card__list-author-row > .col {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.card-form__icon-column {
-  max-width: 30px;
+.spinner-container {
+  min-height: 40vh;
 }
 
 .full-card__section {
   margin-bottom: 20px;
 }
 
+.full-card__list-author-row > .col {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.full-card__card-author-container {
+  text-align: right;
+}
+
 .full-card__card-author {
   font-weight: bold;
 }
 
-.card-form__card-author-container {
-  text-align: right;
+.full-card__icon-column {
+  max-width: 30px;
 }
 
-.full-card-form__save-cancel-btns-container {
+.full-card__icon-span {
+  display: flex;
+  justify-content: right;
+  vertical-align: middle;
+  padding-top: 0px;
+}
+
+.full-card__icon {
+  width: 22px;
+  height: 22px;
+  color: var(--ds-text);
+  opacity: 0.85;
+}
+
+.full-card__save-cancel-btns-container {
   display: flex;
   vertical-align: middle;
 }
 
-.full-card-form__delete-btn-container {
+.full-card__delete-btn-container {
   vertical-align: middle;
   text-align: right;
 }
 
+.full-card__delete-btn-container > .full-card__delete-btn {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-top: 0px;
+}
+
+.full-card__delete-btn {
+  height: 100%;
+}
+
+.full-card__delete-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--ds-text);
+  opacity: 0.85;
+}
+
+.full-card__delete-icon:hover {
+  color: red;
+}
 .textarea-autosize {
   resize: none;
   overflow: hidden;
@@ -41,11 +80,11 @@
   border: 1px solid #fff;
 }
 
-.card-form__title-textarea {
+.full-card__card-title-textarea {
   font-size: 18px;
 }
 
-.textarea-autosize.textarea__text {
+.textarea-autosize.full-card__card-text-textarea {
   font-size: 20px;
   font-weight: 600;
 
@@ -59,44 +98,4 @@
   width: fit-content;
   margin-right: 10px;
   flex-shrink: 2;
-}
-
-.spinner-container {
-  min-height: 40vh;
-}
-
-.card-form__icon-span {
-  display: flex;
-  justify-content: right;
-  vertical-align: middle;
-  padding-top: 0px;
-}
-
-.full-card-icon {
-  width: 22px;
-  height: 22px;
-  color: var(--ds-text);
-  opacity: 0.85;
-}
-
-.card-form__delete-btn {
-  height: 100%;
-}
-
-.full-card-form__delete-btn-container > .card-form__delete-btn {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  padding-top: 0px;
-}
-
-.full-card-form__delete-icon {
-  width: 22px;
-  height: 22px;
-  color: var(--ds-text);
-  opacity: 0.85;
-}
-
-.full-card-form__delete-icon:hover {
-  color: red;
 }

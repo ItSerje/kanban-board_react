@@ -11,7 +11,7 @@ const Navbar: React.FC<LoginFormProps> = ({ logout }): JSX.Element => {
   const { currentUser }: { currentUser: string } = useAppContext();
   return (
     <BootstrapNavbar className='navbar'>
-      <BootstrapNavbar.Brand href='#home' className='navbar-brand'>
+      <BootstrapNavbar.Brand href='#home' className='navbar__brand'>
         Kanban Board
       </BootstrapNavbar.Brand>
       <BootstrapNavbar.Toggle />
@@ -20,9 +20,9 @@ const Navbar: React.FC<LoginFormProps> = ({ logout }): JSX.Element => {
           <BootstrapNavbar.Text className='d-none d-sm-inline'>
             Signed in as:{' '}
           </BootstrapNavbar.Text>
-          <span className='current-user-name'>{currentUser}</span>
+          <span className='navbar__current-user-name'>{currentUser}</span>
           {' | '}
-          <span className='logout' onClick={logout}>
+          <span className='navbar__logout-control' onClick={logout}>
             Sign out
           </span>
         </BootstrapNavbar.Text>

@@ -1,14 +1,3 @@
-.current-user-name {
-  font-weight: bold;
-}
-
-.logout {
-  cursor: pointer;
-}
-.logout:hover {
-  color: var(--bs-blue);
-}
-
 .navbar {
   padding-left: 20px;
   padding-right: 20px;
@@ -16,6 +5,18 @@
   flex: 0 1 auto;
 }
 
-.navbar-brand {
+.navbar__brand {
   font-weight: bold;
+}
+
+.navbar__current-user-name {
+  font-weight: bold;
+}
+
+.navbar__logout-control {
+  cursor: pointer;
+}
+
+.navbar__logout-control:hover {
+  color: var(--bs-blue);
 }

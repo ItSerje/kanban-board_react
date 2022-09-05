@@ -39,7 +39,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ closeModal }): JSX.Element => {
           name='name'
           autoFocus
           required
-          placeholder='Test users: John, Mary, Chris, Mike'
+          placeholder='Test users: John, Mary, Mike'
           value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
