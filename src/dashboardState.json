@@ -3,7 +3,7 @@
     "columns": [
       {
         "id": "1",
-        "name": "Column 1",
+        "name": "TODO",
         "cards": [
           {
             "id": "1",
@@ -27,7 +27,7 @@
             "id": "3",
             "author": "Mike",
             "title": "Godard butcher portland photo booth",
-            "text": "I'm baby chia poutine butcher raw denim tumeric bruh photo booth schlitz 8-bit. Stumptown direct trade pug flannel iceland listicle locavore kogi irony woke vaporware bruh. Edison bulb glossier ramps heirloom cray narwhal craft beer air plant shoreditch. Freegan salvia kickstarter tattooed, asymmetrical fam aesthetic mlkshk vape cardigan vaporware 3 wolf moon.",
+            "text": "Chia poutine butcher raw denim tumeric bruh photo booth schlitz 8-bit. Stumptown direct trade pug flannel iceland listicle locavore kogi irony woke vaporware bruh. Edison bulb glossier ramps heirloom cray narwhal craft beer air plant shoreditch. Freegan salvia kickstarter tattooed, asymmetrical fam aesthetic mlkshk vape cardigan vaporware 3 wolf moon.",
             "comments": [
               {
                 "id": "1",
@@ -36,12 +36,24 @@
               },
               {
                 "id": "2",
-                "author": "Mike",
+                "author": "John",
                 "comment": "flannel iceland listicle locavore kogi irony woke vaporware bruh. Edison bulb glossier ramps heirloom cray narwhal craft beer air plant shoreditch"
               }
             ]
           },
-
+          {
+            "id": "20",
+            "author": "Mary",
+            "title": "Chartreuse wolf blue bottle, quinoa vexillologist cray ennui mukbang",
+            "text": "Freegan marfa fanny pack pok pok occupy. Small batch hammock actually, tattooed polaroid keffiyeh flannel ugh YOLO fanny pack biodiesel. Williamsburg four dollar toast shoreditch coloring book green juice microdosing lomo chillwave sartorial +1 single-origin coffee pork belly activated charcoal. Viral waistcoat occupy cardigan jianbing, chicharrones tacos YOLO tonx gluten-free yes plz portland knausgaard flannel. Cold-pressed bodega boys listicle bicycle rights flannel edison bulb messenger bag aesthetic cliche jianbing.",
+            "comments": [
+              {
+                "id": "1",
+                "author": "John",
+                "comment": "Art party VHS taxidermy street art air plant. Gentrify live-edge DSA woke skateboard green juice"
+              }
+            ]
+          },
           {
             "id": "18",
             "author": "Mary",
@@ -63,7 +75,7 @@
           {
             "id": "19",
             "author": "John",
-            "title": "I'm baby narwhal knausgaard JOMO small batch, YOLO yes plz pickled.",
+            "title": "Narwhal knausgaard JOMO small batch, YOLO yes plz pickled",
             "text": "Tousled brunch cliche schlitz deep v vibecession, jianbing post-ironic waistcoat flexitarian locavore woke.",
             "comments": [
               {
@@ -77,12 +89,19 @@
                 "comment": "VHS synth migas slow-carb lyft occupy"
               }
             ]
+          },
+          {
+            "id": "8",
+            "author": "Mary",
+            "title": "Taiyaki blog normcore, pork belly knausgaard kogi art party",
+            "text": "Direct trade schlitz fam, VHS synth migas slow-carb lyft occupy subway tile chia af mustache. Art party VHS taxidermy street art air plant. Gentrify live-edge DSA woke skateboard green juice.",
+            "comments": []
           }
         ]
       },
       {
         "id": "2",
-        "name": "Column 2",
+        "name": "In Progress",
         "cards": [
           {
             "id": "2",
@@ -155,16 +174,8 @@
       },
       {
         "id": "3",
-        "name": "Column 3",
+        "name": "Testing",
         "cards": [
-          {
-            "id": "8",
-            "author": "Mary",
-            "title": "Taiyaki blog normcore, pork belly knausgaard kogi art party",
-            "text": "Direct trade schlitz fam, VHS synth migas slow-carb lyft occupy subway tile chia af mustache. Art party VHS taxidermy street art air plant. Gentrify live-edge DSA woke skateboard green juice.",
-            "comments": []
-          },
-
           {
             "id": "11",
             "author": "John",
@@ -205,25 +216,12 @@
                 "comment": "VHS synth migas slow-carb lyft occupy"
               }
             ]
-          },
-          {
-            "id": "20",
-            "author": "Mary",
-            "title": "Chartreuse wolf blue bottle, quinoa vexillologist cray ennui mukbang",
-            "text": "Freegan marfa fanny pack pok pok occupy. Small batch hammock actually, tattooed polaroid keffiyeh flannel ugh YOLO fanny pack biodiesel. Williamsburg four dollar toast shoreditch coloring book green juice microdosing lomo chillwave sartorial +1 single-origin coffee pork belly activated charcoal. Viral waistcoat occupy cardigan jianbing, chicharrones tacos YOLO tonx gluten-free yes plz portland knausgaard flannel. Cold-pressed bodega boys listicle bicycle rights flannel edison bulb messenger bag aesthetic cliche jianbing.",
-            "comments": [
-              {
-                "id": "1",
-                "author": "John",
-                "comment": "Art party VHS taxidermy street art air plant. Gentrify live-edge DSA woke skateboard green juice"
-              }
-            ]
           }
         ]
       },
       {
         "id": "4",
-        "name": "Column 4",
+        "name": "Done",
         "cards": [
           {
             "id": "5",
