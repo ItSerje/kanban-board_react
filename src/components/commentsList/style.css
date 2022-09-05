@@ -2,6 +2,14 @@
   margin-bottom: 25px;
 }
 
+.comments__edit-del-notice {
+  font-style: italic;
+}
+
+.comments__edit-del-notice:hover {
+  color: red;
+}
+
 .full-card__icon-column {
   padding-left: 0;
   padding-right: 0;

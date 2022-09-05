@@ -45,6 +45,11 @@ const Comments: React.FC<ICommentsProps> = ({
           <Row>
             <h5>Comments</h5>
           </Row>
+          <Row>
+            <p className='comments__edit-del-notice'>
+              (only comment author can edit or delete a comment)
+            </p>
+          </Row>
         </Col>
       </Row>
       {comments.map((comment) => {
