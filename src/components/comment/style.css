@@ -4,7 +4,7 @@
 }
 
 .comments__comment-control:hover {
-  color: #198754;
+  color: var(--bs-link-color);
 }
 
 .comments__comment-control-del:hover {
