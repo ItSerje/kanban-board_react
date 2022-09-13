@@ -11,14 +11,12 @@ import './style.css';
 
 interface IFullCardProps {
   card: IFullCard;
-  columnName: string;
   updateCardHandler: (card: IFullCard) => Promise<void>;
   deleteCardHandler: (id: string) => Promise<void>;
 }
 
 const FullCard: React.FC<IFullCardProps> = ({
   card,
-  columnName,
   updateCardHandler,
   deleteCardHandler,
 }): JSX.Element => {
@@ -53,7 +51,7 @@ const FullCard: React.FC<IFullCardProps> = ({
           <Col>
             <p>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              in list <a href='#'>{columnName}</a>
+              in list <a href='#'>{card.columnName}</a>
             </p>
           </Col>
           <Col className='full-card__card-author-container'>

@@ -7,13 +7,11 @@ import { IFullCard } from '../../models/dashboard.model';
 
 interface IFullCardContainerProps {
   cardId: string;
-  columnName: string;
   closeModal: () => void;
 }
 
 const FullCardContainer: React.FC<IFullCardContainerProps> = ({
   cardId,
-  columnName,
   closeModal,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -62,7 +60,6 @@ const FullCardContainer: React.FC<IFullCardContainerProps> = ({
       <>
         <FullCard
           card={card}
-          columnName={columnName}
           updateCardHandler={updateCardHandler}
           deleteCardHandler={deleteCardHandler}
         ></FullCard>

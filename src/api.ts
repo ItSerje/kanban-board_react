@@ -81,6 +81,7 @@ const fetchCardById = async (id: string): Promise<IFullCard | null> => {
   }
   const card = {
     ...db.cards[id],
+    columnName: db.columns[db.cards[id].columnId].name,
     comments:
       Object.values(db.comments).filter((comment) => comment.cardId === id) ||
       [],

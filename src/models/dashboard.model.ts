@@ -14,6 +14,7 @@ interface ICard {
 interface IFullCard {
   id: string;
   columnId: string;
+  columnName: string;
   author: string;
   title: string;
   text: string;

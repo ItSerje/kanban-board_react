@@ -31,11 +31,7 @@ const Card: React.FC<ICardProps> = ({ card, columnName }): JSX.Element => {
           headerTitle='Card Details'
           isModalShown={isModalShown}
         >
-          <FullCardContainer
-            cardId={id}
-            columnName={columnName}
-            closeModal={closeModal}
-          />
+          <FullCardContainer cardId={id} closeModal={closeModal} />
         </Modal>
       )}
       <BootstrapCard
