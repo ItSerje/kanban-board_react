@@ -3,12 +3,12 @@ import BootstrapCard from 'react-bootstrap/Card';
 import BootstrapForm from 'react-bootstrap/Form';
 import autoResizeTextarea from '../../utils/autoresize-textarea';
 import TextareaForm from '../textareaForm/TextareaForm';
-import { Icard } from '../../models/dashboard.model';
+import { ICard } from '../../models/dashboard.model';
 import Card from '../card/Card';
 import './style.css';
 
 interface ICardsListProps {
-  cards: Icard[];
+  cards: ICard[];
   name: string;
   updateColumnNameHandler: (newName: string) => void;
   createCardHandler: (title: string) => void;

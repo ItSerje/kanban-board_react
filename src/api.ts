@@ -1,7 +1,8 @@
 // fake server connection
 import dashboardState from './dashboardState.json';
 import generateId from './utils/generateId';
-import { Idashboard, Icolumn, Icard, Icomment } from './models/dashboard.model';
+import { IColumn, IFullCard } from './models/dashboard.model';
+import { IDb } from './models/db.model';
 
 // change to control 'request' duration - affects spinner on dashboard and full card
 const RESPONSE_DELAY = 500;
@@ -18,70 +19,72 @@ const exportJSONToLocalStorage = async (): Promise<void> => {
   }
 };
 
-const fetchDashboard = async (): Promise<Icolumn[] | null> => {
+const fetchDashboard = async (): Promise<IColumn[] | null> => {
   await exportJSONToLocalStorage();
   await asyncTimeout(RESPONSE_DELAY);
-  const db = localStorage.getItem('db');
+  const db: IDb | null = await getDbFromLocalStorage();
   if (!db) {
     return null;
   }
-  const parsedData = await JSON.parse(db);
-  const dashboard: Idashboard = parsedData;
-  if (!dashboard) {
-    return null;
-  }
-  return dashboard.dashboard.columns;
-};
 
-// HELPERS
-// helper function for all the following requests
-const getColumnsFromLocalStorage = async (): Promise<Icolumn[] | null> => {
-  const db = localStorage.getItem('db');
-  if (!db) {
-    return null;
-  }
-  const parsedDb = await JSON.parse(db);
-  const dashboard = parsedDb.dashboard;
-  const columns: Icolumn[] = dashboard.columns;
-  if (!columns) {
-    return null;
-  }
+  // construct dashboard cards array
+  const cards = Object.values(db.cards).map((card) => {
+    const comments = Object.values(db.comments).filter(
+      (comment) => comment.cardId === card.id
+    ).length;
+    return {
+      id: card.id,
+      columnId: card.columnId,
+      title: card.title,
+      commentsNumber: comments || 0,
+    };
+  });
+
+  // construct columns array
+  const columns = Object.values(db.columns).map((column) => {
+    const columnCards =
+      cards.filter((card) => card.columnId === column.id) || [];
+    return { ...column, cards: columnCards };
+  });
+
   return columns;
 };
 
-// helper function for all the following requests
-const replaceColumnsInLocalStorage = async (
-  newColumns: Icolumn[]
-): Promise<boolean> => {
-  const db = localStorage.getItem('db');
+// HELPERS
+
+// get db from localStorage
+const getDbFromLocalStorage = async (): Promise<IDb | null> => {
+  const data = localStorage.getItem('db');
+  if (!data) {
+    return null;
+  }
+  const db = await JSON.parse(data);
   if (!db) {
-    return false;
+    return null;
   }
-  const parsedDb = await JSON.parse(db);
-  const updatedDashboard = { ...parsedDb.dashboard, columns: newColumns };
-  const updatedDb: Idashboard = { ...parsedDb, dashboard: updatedDashboard };
-  if (!updatedDb) {
-    return false;
-  }
-  localStorage.setItem('db', JSON.stringify(updatedDb));
-  return true;
+  return db;
+};
+
+// set db to localStorage
+const setDbToLocalStorage = (db: IDb): void => {
+  localStorage.setItem('db', JSON.stringify(db));
 };
 
 // CRUD FOR CARDS
+
 // read
-const fetchCardById = async (id: string): Promise<Icard | null> => {
+const fetchCardById = async (id: string): Promise<IFullCard | null> => {
   await asyncTimeout(RESPONSE_DELAY);
-  const columns = await getColumnsFromLocalStorage();
-  if (!columns || columns.length === 0) {
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return null;
   }
-  const cards = columns
-    .map((column: Icolumn) => {
-      const cards: Icard[] = column.cards;
-      return cards;
-    })
-    .flat();
-  const card = cards.find((card: Icard) => card?.id === id);
+  const card = {
+    ...db.cards[id],
+    comments:
+      Object.values(db.comments).filter((comment) => comment.cardId === id) ||
+      [],
+  };
   if (!card) {
     return null;
   }
@@ -95,59 +98,50 @@ const createCard = async (
   currentUser: string
 ): Promise<boolean> => {
   await asyncTimeout(RESPONSE_DELAY);
-  const columns = await getColumnsFromLocalStorage();
-  if (!columns || columns.length === 0) {
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return false;
   }
-  const newColumns: Icolumn[] = columns.map((column: Icolumn) => {
-    if (column.id === columnId) {
-      column.cards.push({
-        id: generateId(20).toString(),
-        author: currentUser,
-        title: title,
-        text: '',
-        comments: [],
-      });
-    }
-    return column;
-  });
-  await replaceColumnsInLocalStorage(newColumns);
+  const newCard = {
+    id: generateId(20).toString(),
+    columnId: columnId,
+    author: currentUser,
+    title: title,
+    text: '',
+  };
+  db.cards[newCard.id] = newCard;
+  setDbToLocalStorage(db);
   return true;
 };
 
 // update
-const updateCard = async (card: Icard): Promise<boolean> => {
+const updateCard = async (card: IFullCard): Promise<boolean> => {
   await asyncTimeout(RESPONSE_DELAY);
-  const columns = await getColumnsFromLocalStorage();
-  if (!columns || columns.length === 0) {
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return false;
   }
-  const newColumns: Icolumn[] = columns.map((column: Icolumn) => {
-    const newCards: Icard[] = column.cards.map((oldCard: Icard) =>
-      oldCard.id === card.id ? card : oldCard
-    );
-    column.cards = newCards;
-    return column;
-  });
-  await replaceColumnsInLocalStorage(newColumns);
+  db.cards[card.id] = card;
+  setDbToLocalStorage(db);
   return true;
 };
 
 // delete
 const deleteCard = async (id: string): Promise<boolean> => {
   await asyncTimeout(RESPONSE_DELAY);
-  const columns = await getColumnsFromLocalStorage();
-  if (!columns || columns.length === 0) {
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return false;
   }
-  const newColumns: Icolumn[] = columns.map((column: Icolumn) => {
-    const newCards: Icard[] = column.cards.filter(
-      (oldCard: Icard) => oldCard.id !== id
-    );
-    column.cards = newCards;
-    return column;
-  });
-  await replaceColumnsInLocalStorage(newColumns);
+  delete db.cards[id];
+
+  // delete card's comments
+  const filteredCommentsArray = Object.entries(db.comments).filter(
+    ([key, value]) => value.cardId !== id
+  );
+  db.comments = Object.fromEntries(filteredCommentsArray);
+
+  setDbToLocalStorage(db);
   return true;
 };
 
@@ -158,55 +152,46 @@ const createComment = async (
   text: string,
   currentUser: string
 ): Promise<boolean> => {
-  const card: Icard | null = await fetchCardById(cardId);
-  if (!card || !card.comments) {
+  await asyncTimeout(RESPONSE_DELAY);
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return false;
   }
-  card.comments.push({
+  const newComment = {
     id: generateId(20).toString(),
+    cardId: cardId,
     author: currentUser,
     comment: text,
-  });
-  await updateCard(card);
+  };
+  db.comments[newComment.id] = newComment;
+  setDbToLocalStorage(db);
   return true;
 };
 
 // update
 const updateComment = async (
-  cardId: string,
   commentId: string,
   text: string
 ): Promise<boolean> => {
-  const card: Icard | null = await fetchCardById(cardId);
-  if (!card || !card.comments) {
+  await asyncTimeout(RESPONSE_DELAY);
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return false;
   }
-  const newComments: Icomment[] = card.comments.map((comment: Icomment) => {
-    if (comment.id && comment.id === commentId) {
-      comment.comment = text;
-      return comment;
-    }
-    return comment;
-  });
-  const updatedCard: Icard = { ...card, comments: newComments };
-  await updateCard(updatedCard);
+  db.comments[commentId].comment = text;
+  setDbToLocalStorage(db);
   return true;
 };
 
 // delete
-const deleteComment = async (
-  cardId: string,
-  commentId: string
-): Promise<boolean> => {
-  const card: Icard | null = await fetchCardById(cardId);
-  if (!card || !card.comments) {
+const deleteComment = async (commentId: string): Promise<boolean> => {
+  await asyncTimeout(RESPONSE_DELAY);
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return false;
   }
-  const newComments: Icomment[] = card.comments.filter(
-    (comment: Icomment) => comment.id !== commentId
-  );
-  const updatedCard: Icard = { ...card, comments: newComments };
-  await updateCard(updatedCard);
+  delete db.comments[commentId];
+  setDbToLocalStorage(db);
   return true;
 };
 
@@ -216,17 +201,12 @@ const updateColumnName = async (
   newName: string
 ): Promise<boolean> => {
   await asyncTimeout(RESPONSE_DELAY);
-  const columns: Icolumn[] | null = await getColumnsFromLocalStorage();
-  if (!columns || columns.length === 0) {
+  const db: IDb | null = await getDbFromLocalStorage();
+  if (!db) {
     return false;
   }
-  const newColumns: Icolumn[] = columns.map((column: Icolumn) => {
-    if (column.id === columnId) {
-      column.name = newName;
-    }
-    return column;
-  });
-  await replaceColumnsInLocalStorage(newColumns);
+  db.columns[columnId].name = newName;
+  setDbToLocalStorage(db);
   return true;
 };
 

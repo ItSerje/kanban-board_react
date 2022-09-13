@@ -3,7 +3,7 @@ import { fetchCardById, updateCard, deleteCard } from '../../api';
 import FullCard from './FullCard';
 import CommentsListContainer from '../commentsList/CommentsListContainer';
 import Spinner from 'react-bootstrap/Spinner';
-import { Icard } from '../../models/dashboard.model';
+import { IFullCard } from '../../models/dashboard.model';
 
 interface IFullCardContainerProps {
   cardId: string;
@@ -17,14 +17,14 @@ const FullCardContainer: React.FC<IFullCardContainerProps> = ({
   closeModal,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [card, setCard] = useState<Icard | null>(null);
+  const [card, setCard] = useState<IFullCard | null>(null);
   const [refreshingCounter, setRefreshingCounter] = useState<number>(0);
 
   const refreshCard: () => void = () => {
     setRefreshingCounter(refreshingCounter + 1);
   };
 
-  const updateCardHandler: (newCard: Icard) => Promise<void> = async (
+  const updateCardHandler: (newCard: IFullCard) => Promise<void> = async (
     newCard
   ) => {
     setIsLoading(true);

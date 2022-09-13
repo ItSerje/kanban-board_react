@@ -1,27 +1,30 @@
-interface Idashboard {
-  dashboard: {
-    columns: Icolumn[];
-  };
-}
-
-interface Icolumn {
+interface IColumn {
   id: string;
   name: string;
-  cards: Icard[];
+  cards: ICard[];
 }
 
-interface Icard {
+interface ICard {
   id: string;
+  columnId: string;
+  title: string;
+  commentsNumber: number;
+}
+
+interface IFullCard {
+  id: string;
+  columnId: string;
   author: string;
   title: string;
   text: string;
-  comments: Icomment[];
+  comments: IComment[];
 }
 
-interface Icomment {
+interface IComment {
   id: string;
+  cardId: string;
   author: string;
   comment: string;
 }
 
-export type { Idashboard, Icolumn, Icard, Icomment };
+export type { IColumn, ICard, IFullCard, IComment };

@@ -3,10 +3,10 @@ import CardsList from './CardsList';
 import { updateColumnName, createCard } from '../../api';
 import { useAppContext } from '../../context/app-context';
 import './style.css';
-import { Icard } from '../../models/dashboard.model';
+import { ICard } from '../../models/dashboard.model';
 
 interface ICardsListContainerProps {
-  cards: Icard[];
+  cards: ICard[];
   name: string;
   columnId: string;
 }

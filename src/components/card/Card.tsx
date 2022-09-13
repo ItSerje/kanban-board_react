@@ -5,15 +5,15 @@ import FullCardContainer from '../fullCard/FullCardContainer';
 import './style.css';
 import { FaRegEdit, FaRegComment } from 'react-icons/fa';
 import { useAppContext } from '../../context/app-context';
-import { Icard } from '../../models/dashboard.model';
+import { ICard } from '../../models/dashboard.model';
 
 interface ICardProps {
-  card: Icard;
+  card: ICard;
   columnName: string;
 }
 
 const Card: React.FC<ICardProps> = ({ card, columnName }): JSX.Element => {
-  const { id, comments, title } = card;
+  const { id, title, commentsNumber } = card;
   const [isIconShown, setIsIconShown] = useState<boolean>(false);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const { refreshDashboard } = useAppContext();
@@ -49,12 +49,12 @@ const Card: React.FC<ICardProps> = ({ card, columnName }): JSX.Element => {
         <BootstrapCard.Body className='card__card-body'>
           <BootstrapCard.Title as='div'>{title}</BootstrapCard.Title>
         </BootstrapCard.Body>
-        {comments.length > 0 && (
+        {commentsNumber > 0 && (
           <BootstrapCard.Footer>
             <div className='card__badge'>
               <FaRegComment className='card__icon-comment' title='Comments' />
               <span className='card-badge__text' title='Comments'>
-                {comments.length}
+                {commentsNumber}
               </span>
             </div>
           </BootstrapCard.Footer>

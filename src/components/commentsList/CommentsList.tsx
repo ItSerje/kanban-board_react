@@ -5,11 +5,11 @@ import { Container, Col, Row, Button } from 'react-bootstrap';
 import UseOutsideClick from '../../hooks/useOutsideClick';
 import { useAppContext } from '../../context/app-context';
 import { FaRegCommentDots } from 'react-icons/fa';
-import { Icomment } from '../../models/dashboard.model';
+import { IComment } from '../../models/dashboard.model';
 import './style.css';
 
 interface ICommentsProps {
-  comments: Icomment[];
+  comments: IComment[];
   addCommentHandler: (text: string) => Promise<void>;
   updateCommentHandler: (commentId: string, text: string) => Promise<void>;
   deleteCommentHandler: (commentId: string) => Promise<void>;

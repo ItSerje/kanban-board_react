@@ -2,10 +2,10 @@ import React from 'react';
 import Comments from './CommentsList';
 import { createComment, updateComment, deleteComment } from '../../api';
 import { useAppContext } from '../../context/app-context';
-import { Icomment } from '../../models/dashboard.model';
+import { IComment } from '../../models/dashboard.model';
 
 interface ICommentsContainerProps {
-  comments: Icomment[];
+  comments: IComment[];
   cardId: string;
   refreshCard: () => void;
   activateCardSpinner: () => void;
@@ -30,7 +30,7 @@ const CommentsContainer: React.FC<ICommentsContainerProps> = ({
     text: string
   ) => Promise<void> = async (commentId, text) => {
     activateCardSpinner();
-    await updateComment(cardId, commentId, text);
+    await updateComment(commentId, text);
     refreshCard();
   };
 
@@ -38,7 +38,7 @@ const CommentsContainer: React.FC<ICommentsContainerProps> = ({
     commentId
   ) => {
     activateCardSpinner();
-    await deleteComment(cardId, commentId);
+    await deleteComment(commentId);
     refreshCard();
   };
 

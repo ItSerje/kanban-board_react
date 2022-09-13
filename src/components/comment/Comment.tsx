@@ -3,11 +3,11 @@ import { Col, Row } from 'react-bootstrap';
 import TextareaForm from '../textareaForm/TextareaForm';
 import UseOutsideClick from '../../hooks/useOutsideClick';
 import { useAppContext } from '../../context/app-context';
-import { Icomment } from '../../models/dashboard.model';
+import { IComment } from '../../models/dashboard.model';
 import './style.css';
 
 interface ICommentProps {
-  comment: Icomment;
+  comment: IComment;
   updateCommentHandler: (commentId: string, text: string) => Promise<void>;
   deleteCommentHandler: (commentId: string) => Promise<void>;
 }

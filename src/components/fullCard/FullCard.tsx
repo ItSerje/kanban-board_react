@@ -6,13 +6,13 @@ import {
   FaAlignLeft,
   FaRegTrashAlt,
 } from 'react-icons/fa';
-import { Icard } from '../../models/dashboard.model';
+import { IFullCard } from '../../models/dashboard.model';
 import './style.css';
 
 interface IFullCardProps {
-  card: Icard;
+  card: IFullCard;
   columnName: string;
-  updateCardHandler: (card: Icard) => Promise<void>;
+  updateCardHandler: (card: IFullCard) => Promise<void>;
   deleteCardHandler: (id: string) => Promise<void>;
 }
 
@@ -30,7 +30,7 @@ const FullCard: React.FC<IFullCardProps> = ({
     e: React.FormEvent<HTMLFormElement>
   ) => Promise<void> = async (e) => {
     e.preventDefault();
-    const updatedCard: Icard = {
+    const updatedCard: IFullCard = {
       ...card,
       title: titleValue.trim(),
       text: textValue.trim(),
